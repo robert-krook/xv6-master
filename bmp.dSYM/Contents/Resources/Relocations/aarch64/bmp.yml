@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/robert.krook/Projects/OS/xv6-master/bmp'
+relocations:     []
+...

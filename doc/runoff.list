@@ -1,0 +1,76 @@
+# basic headers
+../include/xv6/types.h
+../include/xv6/param.h
+../include/xv6/memlayout.h
+../include/xv6/defs.h
+../include/xv6/x86.h
+../include/xv6/asm.h
+../include/xv6/mmu.h
+../include/xv6/elf.h
+
+# entering xv6
+../kern/entry.S
+../kern/entryother.S
+../kern/main.c
+
+# locks
+../include/xv6/spinlock.h
+../kern/spinlock.c
+
+# processes
+../kern/vm.c
+../include/xv6/proc.h
+../kern/proc.c
+../kern/swtch.S
+../kern/kalloc.c
+
+# system calls
+../include/xv6/traps.h
+../kern/vectors.pl
+../kern/trapasm.S
+../kern/trap.c
+../include/xv6/syscall.h
+../kern/syscall.c
+../kern/sysproc.c
+
+# file system
+../include/xv6/buf.h
+../include/xv6/fcntl.h
+../include/xv6/stat.h
+../include/xv6/fs.h
+../include/xv6/file.h
+../kern/ide.c
+../kern/bio.c
+../kern/log.c
+../kern/fs.c
+../kern/file.c
+../kern/sysfile.c
+../kern/exec.c
+
+# pipes
+../kern/pipe.c
+
+# string operations
+../kern/string.c
+
+# low-level hardware
+../include/xv6/mp.h
+../kern/mp.c
+../kern/lapic.c
+../kern/ioapic.c
+../kern/picirq.c
+../include/xv6/kbd.h
+../kern/kbd.c
+../kern/console.c
+../kern/timer.c
+../kern/uart.c
+
+# user-level
+../kern/initcode.S
+../lib/ulib/usys.S
+../cmd/old/init.c
+../cmd/old/sh.c
+
+# bootloader
+../boot/bootasm.S
+../boot/bootmain.c

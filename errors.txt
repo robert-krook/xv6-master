@@ -1,0 +1,1152 @@
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mp.o kernel/mp.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/acpi.o kernel/acpi.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/picirq.o kernel/picirq.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pipe.o kernel/pipe.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/proc.o kernel/proc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/spinlock.o kernel/spinlock.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/string.o kernel/string.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/swtch64.o kernel/swtch64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/syscall.o kernel/syscall.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysfile.o kernel/sysfile.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysproc.o kernel/sysproc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/timer.o kernel/timer.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/trapasm64.o kernel/trapasm64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/trap.o kernel/trap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/uart.o kernel/uart.c
+perl tools/vectors64.pl > kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/vectors.o kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm.o kernel/vm.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/graphics.o kernel/graphics.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/window_manager.o kernel/window_manager.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mouse.o kernel/mouse.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/msg.o kernel/msg.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/cmos.o kernel/cmos.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bga.o kernel/bga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pci.o kernel/pci.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/gui.o kernel/gui.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/amiga/amiga.o kernel/amiga/amiga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdio.o kernel/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdlib.o kernel/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm64.o kernel/vm64.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/entry64.o kernel/entry64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -fno-pic -nostdinc -I. -o out/entryother.o -c kernel/entryother.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0x7000 -o out/bootblockother.o out/entryother.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblockother.o out/entryother
+objdump -S out/bootblockother.o > out/entryother.asm
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -nostdinc -I. -o out/initcode.o -c kernel/initcode64.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0 -o out/initcode.out out/initcode.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary out/initcode.out out/initcode
+objdump -S out/initcode.o > out/initcode.asm
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -T kernel/kernel64.ld -o out/kernel.elf kobj/entry64.o kobj/bio.o kobj/console.o kobj/exec.o kobj/file.o kobj/fs.o kobj/ide.o kobj/ioapic.o kobj/kalloc.o kobj/kbd.o kobj/lapic.o kobj/log.o kobj/main.o kobj/mp.o kobj/acpi.o kobj/picirq.o kobj/pipe.o kobj/proc.o kobj/spinlock.o kobj/string.o kobj/swtch64.o kobj/syscall.o kobj/sysfile.o kobj/sysproc.o kobj/timer.o kobj/trapasm64.o kobj/trap.o kobj/uart.o kobj/vectors.o kobj/vm.o kobj/graphics.o kobj/window_manager.o kobj/mouse.o kobj/msg.o kobj/cmos.o kobj/bga.o kobj/pci.o kobj/gui.o kobj/amiga/amiga.o kobj/libc/stdio.o kobj/libc/stdlib.o kobj/vm64.o -b binary out/initcode out/entryother 
+objdump -S out/kernel.elf > out/kernel.asm
+objdump -t out/kernel.elf | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kernel.sym
+gcc -Werror -Wall -o out/mkfs tools/mkfs.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o uobj/usys.o ulib/usys.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/printf.o ulib/printf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/umalloc.o ulib/umalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/hashtable.o ulib/hashtable.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/sprintf.o ulib/sprintf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_window.o ulib/user_window.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_handler.o ulib/user_handler.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bitmap.o ulib/bitmap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/parser.o shell_lib/parser.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/history.o shell_lib/history.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/input.o shell_lib/input.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/string.o ulib/libc/string.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/ctype.o ulib/libc/ctype.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stat.o ulib/libc/stat.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdlib.o ulib/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdio.o ulib/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/libc.a uobj/libc/string.o
+x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
+x86_64-elf-ranlib uobj/libc/libc.a
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/init.o user/init.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/init uobj/init.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/init > out/init.asm
+objdump -t fs/init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/init.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/desktop.o user/desktop.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/desktop uobj/desktop.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/desktop > out/desktop.asm
+objdump -t fs/desktop | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/desktop.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash.o user/bash.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash uobj/bash.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash > out/bash.asm
+objdump -t fs/bash | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cat.o user/cat.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cat uobj/cat.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cat > out/cat.asm
+objdump -t fs/cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cat.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/grep.o user/grep.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/grep uobj/grep.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/grep > out/grep.asm
+objdump -t fs/grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/grep.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mkdir.o user/mkdir.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mkdir uobj/mkdir.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mkdir > out/mkdir.asm
+objdump -t fs/mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mkdir.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/shell.o user/shell.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/shell uobj/shell.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/shell > out/shell.asm
+objdump -t fs/shell | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/shell.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/editor.o user/editor.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/editor uobj/editor.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/editor > out/editor.asm
+objdump -t fs/editor | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/editor.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/explorer.o user/explorer.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/explorer uobj/explorer.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/explorer > out/explorer.asm
+objdump -t fs/explorer | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/explorer.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/startWindow.o user/startWindow.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/startWindow uobj/startWindow.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/startWindow > out/startWindow.asm
+objdump -t fs/startWindow | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/startWindow.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ls.o user/ls.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ls uobj/ls.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ls > out/ls.asm
+objdump -t fs/ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ls.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/echo.o user/echo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/echo uobj/echo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/echo > out/echo.asm
+objdump -t fs/echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/echo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/daemon.o user/daemon.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/daemon uobj/daemon.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/daemon > out/daemon.asm
+objdump -t fs/daemon | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/daemon.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/clock.o user/clock.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/clock uobj/clock.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/clock > out/clock.asm
+objdump -t fs/clock | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/clock.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ps.o user/ps.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ps uobj/ps.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ps > out/ps.asm
+objdump -t fs/ps | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ps.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/demo.o user/demo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/demo uobj/demo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/demo > out/demo.asm
+objdump -t fs/demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/demo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cp.o user/cp.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cp uobj/cp.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cp > out/cp.asm
+objdump -t fs/cp | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cp.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mv.o user/mv.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mv uobj/mv.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mv > out/mv.asm
+objdump -t fs/mv | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mv.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/kill.o user/kill.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/kill uobj/kill.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/kill > out/kill.asm
+objdump -t fs/kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kill.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash2.o user/bash2.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash2 uobj/bash2.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash2 > out/bash2.asm
+objdump -t fs/bash2 | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash2.sym
+out/mkfs fs.img fs/init fs/desktop fs/bash fs/cat fs/grep fs/mkdir fs/shell fs/editor fs/explorer fs/startWindow fs/ls fs/echo fs/daemon fs/clock gui/test.bmp gui/clock.bmp gui/cli.bmp gui/explorer.bmp fs/ps gui/app.bmp fs/demo install.sh fs/cp fs/mv fs/kill fs/bash2 etc/amiga.cfg 
+size=4026
+used 16 (bit 1 ninode 13) free 16 log 10 total 4026
+name (1)=fs/init
+name (1)=fs/desktop
+name (1)=fs/bash
+name (1)=fs/cat
+name (1)=fs/grep
+name (1)=fs/mkdir
+name (1)=fs/shell
+name (1)=fs/editor
+name (1)=fs/explorer
+name (1)=fs/startWindow
+name (1)=fs/ls
+name (1)=fs/echo
+name (1)=fs/daemon
+name (1)=fs/clock
+name (1)=gui/test.bmp
+name (1)=gui/clock.bmp
+name (1)=gui/cli.bmp
+name (1)=gui/explorer.bmp
+name (1)=fs/ps
+name (1)=gui/app.bmp
+name (1)=fs/demo
+name (1)=install.sh
+name (1)=fs/cp
+name (1)=fs/mv
+name (1)=fs/kill
+name (1)=fs/bash2
+name (1)=etc/amiga.cfg
+balloc: first 2076 blocks have been allocated
+balloc: write bitmap block at sector 15
+dd if=/dev/zero of=xv6.img count=10000
+dd if=out/bootblock of=xv6.img conv=notrunc
+dd if=out/kernel.elf of=xv6.img seek=1 conv=notrunc
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -O -o out/bootmain.o -c kernel/bootmain.c
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -o out/bootasm.o -c kernel/bootasm.S
+x86_64-elf-ld  -m elf_i386 -nostdlib -N -e start -Ttext 0x7C00 -o out/bootblock.o out/bootasm.o out/bootmain.o
+objdump -S out/bootblock.o > out/bootblock.asm
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblock.o out/bootblock
+tools/sign.pl out/bootblock
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bio.o kernel/bio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/console.o kernel/console.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/exec.o kernel/exec.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/file.o kernel/file.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/fs.o kernel/fs.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ide.o kernel/ide.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ioapic.o kernel/ioapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kalloc.o kernel/kalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kbd.o kernel/kbd.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/lapic.o kernel/lapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/log.o kernel/log.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/main.o kernel/main.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mp.o kernel/mp.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/acpi.o kernel/acpi.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/picirq.o kernel/picirq.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pipe.o kernel/pipe.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/proc.o kernel/proc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/spinlock.o kernel/spinlock.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/string.o kernel/string.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/swtch64.o kernel/swtch64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/syscall.o kernel/syscall.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysfile.o kernel/sysfile.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysproc.o kernel/sysproc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/timer.o kernel/timer.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/trapasm64.o kernel/trapasm64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/trap.o kernel/trap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/uart.o kernel/uart.c
+perl tools/vectors64.pl > kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/vectors.o kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm.o kernel/vm.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/graphics.o kernel/graphics.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/window_manager.o kernel/window_manager.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mouse.o kernel/mouse.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/msg.o kernel/msg.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/cmos.o kernel/cmos.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bga.o kernel/bga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pci.o kernel/pci.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/gui.o kernel/gui.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/amiga/amiga.o kernel/amiga/amiga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdio.o kernel/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdlib.o kernel/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm64.o kernel/vm64.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/entry64.o kernel/entry64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -fno-pic -nostdinc -I. -o out/entryother.o -c kernel/entryother.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0x7000 -o out/bootblockother.o out/entryother.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblockother.o out/entryother
+objdump -S out/bootblockother.o > out/entryother.asm
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -nostdinc -I. -o out/initcode.o -c kernel/initcode64.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0 -o out/initcode.out out/initcode.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary out/initcode.out out/initcode
+objdump -S out/initcode.o > out/initcode.asm
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -T kernel/kernel64.ld -o out/kernel.elf kobj/entry64.o kobj/bio.o kobj/console.o kobj/exec.o kobj/file.o kobj/fs.o kobj/ide.o kobj/ioapic.o kobj/kalloc.o kobj/kbd.o kobj/lapic.o kobj/log.o kobj/main.o kobj/mp.o kobj/acpi.o kobj/picirq.o kobj/pipe.o kobj/proc.o kobj/spinlock.o kobj/string.o kobj/swtch64.o kobj/syscall.o kobj/sysfile.o kobj/sysproc.o kobj/timer.o kobj/trapasm64.o kobj/trap.o kobj/uart.o kobj/vectors.o kobj/vm.o kobj/graphics.o kobj/window_manager.o kobj/mouse.o kobj/msg.o kobj/cmos.o kobj/bga.o kobj/pci.o kobj/gui.o kobj/amiga/amiga.o kobj/libc/stdio.o kobj/libc/stdlib.o kobj/vm64.o -b binary out/initcode out/entryother 
+objdump -S out/kernel.elf > out/kernel.asm
+objdump -t out/kernel.elf | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kernel.sym
+gcc -Werror -Wall -o out/mkfs tools/mkfs.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o uobj/usys.o ulib/usys.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/printf.o ulib/printf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/umalloc.o ulib/umalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/hashtable.o ulib/hashtable.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/sprintf.o ulib/sprintf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_window.o ulib/user_window.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_handler.o ulib/user_handler.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bitmap.o ulib/bitmap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/parser.o shell_lib/parser.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/history.o shell_lib/history.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/input.o shell_lib/input.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/string.o ulib/libc/string.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/ctype.o ulib/libc/ctype.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stat.o ulib/libc/stat.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdlib.o ulib/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdio.o ulib/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/libc.a uobj/libc/string.o
+x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
+x86_64-elf-ranlib uobj/libc/libc.a
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/init.o user/init.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/init uobj/init.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/init > out/init.asm
+objdump -t fs/init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/init.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/desktop.o user/desktop.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/desktop uobj/desktop.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/desktop > out/desktop.asm
+objdump -t fs/desktop | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/desktop.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash.o user/bash.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash uobj/bash.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash > out/bash.asm
+objdump -t fs/bash | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cat.o user/cat.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cat uobj/cat.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cat > out/cat.asm
+objdump -t fs/cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cat.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/grep.o user/grep.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/grep uobj/grep.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/grep > out/grep.asm
+objdump -t fs/grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/grep.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mkdir.o user/mkdir.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mkdir uobj/mkdir.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mkdir > out/mkdir.asm
+objdump -t fs/mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mkdir.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/shell.o user/shell.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/shell uobj/shell.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/shell > out/shell.asm
+objdump -t fs/shell | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/shell.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/editor.o user/editor.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/editor uobj/editor.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/editor > out/editor.asm
+objdump -t fs/editor | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/editor.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/explorer.o user/explorer.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/explorer uobj/explorer.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/explorer > out/explorer.asm
+objdump -t fs/explorer | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/explorer.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/startWindow.o user/startWindow.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/startWindow uobj/startWindow.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/startWindow > out/startWindow.asm
+objdump -t fs/startWindow | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/startWindow.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ls.o user/ls.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ls uobj/ls.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ls > out/ls.asm
+objdump -t fs/ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ls.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/echo.o user/echo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/echo uobj/echo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/echo > out/echo.asm
+objdump -t fs/echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/echo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/daemon.o user/daemon.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/daemon uobj/daemon.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/daemon > out/daemon.asm
+objdump -t fs/daemon | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/daemon.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/clock.o user/clock.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/clock uobj/clock.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/clock > out/clock.asm
+objdump -t fs/clock | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/clock.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ps.o user/ps.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ps uobj/ps.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ps > out/ps.asm
+objdump -t fs/ps | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ps.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/demo.o user/demo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/demo uobj/demo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/demo > out/demo.asm
+objdump -t fs/demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/demo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cp.o user/cp.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cp uobj/cp.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cp > out/cp.asm
+objdump -t fs/cp | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cp.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mv.o user/mv.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mv uobj/mv.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mv > out/mv.asm
+objdump -t fs/mv | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mv.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/kill.o user/kill.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/kill uobj/kill.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/kill > out/kill.asm
+objdump -t fs/kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kill.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash2.o user/bash2.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash2 uobj/bash2.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash2 > out/bash2.asm
+objdump -t fs/bash2 | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash2.sym
+out/mkfs fs.img fs/init fs/desktop fs/bash fs/cat fs/grep fs/mkdir fs/shell fs/editor fs/explorer fs/startWindow fs/ls fs/echo fs/daemon fs/clock gui/test.bmp gui/clock.bmp gui/cli.bmp gui/explorer.bmp fs/ps gui/app.bmp fs/demo install.sh fs/cp fs/mv fs/kill fs/bash2 etc/amiga.cfg 
+size=4026
+used 16 (bit 1 ninode 13) free 16 log 10 total 4026
+name (1)=fs/init
+name (1)=fs/desktop
+name (1)=fs/bash
+name (1)=fs/cat
+name (1)=fs/grep
+name (1)=fs/mkdir
+name (1)=fs/shell
+name (1)=fs/editor
+name (1)=fs/explorer
+name (1)=fs/startWindow
+name (1)=fs/ls
+name (1)=fs/echo
+name (1)=fs/daemon
+name (1)=fs/clock
+name (1)=gui/test.bmp
+name (1)=gui/clock.bmp
+name (1)=gui/cli.bmp
+name (1)=gui/explorer.bmp
+name (1)=fs/ps
+name (1)=gui/app.bmp
+name (1)=fs/demo
+name (1)=install.sh
+name (1)=fs/cp
+name (1)=fs/mv
+name (1)=fs/kill
+name (1)=fs/bash2
+name (1)=etc/amiga.cfg
+balloc: first 2076 blocks have been allocated
+balloc: write bitmap block at sector 15
+dd if=/dev/zero of=xv6.img count=10000
+dd if=out/bootblock of=xv6.img conv=notrunc
+dd if=out/kernel.elf of=xv6.img seek=1 conv=notrunc
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -O -o out/bootmain.o -c kernel/bootmain.c
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -o out/bootasm.o -c kernel/bootasm.S
+x86_64-elf-ld  -m elf_i386 -nostdlib -N -e start -Ttext 0x7C00 -o out/bootblock.o out/bootasm.o out/bootmain.o
+objdump -S out/bootblock.o > out/bootblock.asm
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblock.o out/bootblock
+tools/sign.pl out/bootblock
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bio.o kernel/bio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/console.o kernel/console.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/exec.o kernel/exec.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/file.o kernel/file.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/fs.o kernel/fs.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ide.o kernel/ide.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ioapic.o kernel/ioapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kalloc.o kernel/kalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kbd.o kernel/kbd.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/lapic.o kernel/lapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/log.o kernel/log.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/main.o kernel/main.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mp.o kernel/mp.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/acpi.o kernel/acpi.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/picirq.o kernel/picirq.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pipe.o kernel/pipe.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/proc.o kernel/proc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/spinlock.o kernel/spinlock.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/string.o kernel/string.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/swtch64.o kernel/swtch64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/syscall.o kernel/syscall.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysfile.o kernel/sysfile.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysproc.o kernel/sysproc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/timer.o kernel/timer.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/trapasm64.o kernel/trapasm64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/trap.o kernel/trap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/uart.o kernel/uart.c
+perl tools/vectors64.pl > kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/vectors.o kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm.o kernel/vm.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/graphics.o kernel/graphics.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/window_manager.o kernel/window_manager.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mouse.o kernel/mouse.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/msg.o kernel/msg.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/cmos.o kernel/cmos.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bga.o kernel/bga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pci.o kernel/pci.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/gui.o kernel/gui.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/amiga/amiga.o kernel/amiga/amiga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdio.o kernel/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdlib.o kernel/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm64.o kernel/vm64.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/entry64.o kernel/entry64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -fno-pic -nostdinc -I. -o out/entryother.o -c kernel/entryother.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0x7000 -o out/bootblockother.o out/entryother.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblockother.o out/entryother
+objdump -S out/bootblockother.o > out/entryother.asm
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -nostdinc -I. -o out/initcode.o -c kernel/initcode64.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0 -o out/initcode.out out/initcode.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary out/initcode.out out/initcode
+objdump -S out/initcode.o > out/initcode.asm
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -T kernel/kernel64.ld -o out/kernel.elf kobj/entry64.o kobj/bio.o kobj/console.o kobj/exec.o kobj/file.o kobj/fs.o kobj/ide.o kobj/ioapic.o kobj/kalloc.o kobj/kbd.o kobj/lapic.o kobj/log.o kobj/main.o kobj/mp.o kobj/acpi.o kobj/picirq.o kobj/pipe.o kobj/proc.o kobj/spinlock.o kobj/string.o kobj/swtch64.o kobj/syscall.o kobj/sysfile.o kobj/sysproc.o kobj/timer.o kobj/trapasm64.o kobj/trap.o kobj/uart.o kobj/vectors.o kobj/vm.o kobj/graphics.o kobj/window_manager.o kobj/mouse.o kobj/msg.o kobj/cmos.o kobj/bga.o kobj/pci.o kobj/gui.o kobj/amiga/amiga.o kobj/libc/stdio.o kobj/libc/stdlib.o kobj/vm64.o -b binary out/initcode out/entryother 
+objdump -S out/kernel.elf > out/kernel.asm
+objdump -t out/kernel.elf | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kernel.sym
+gcc -Werror -Wall -o out/mkfs tools/mkfs.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o uobj/usys.o ulib/usys.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/printf.o ulib/printf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/umalloc.o ulib/umalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/hashtable.o ulib/hashtable.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/sprintf.o ulib/sprintf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_window.o ulib/user_window.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_handler.o ulib/user_handler.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bitmap.o ulib/bitmap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/parser.o shell_lib/parser.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/history.o shell_lib/history.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/input.o shell_lib/input.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/string.o ulib/libc/string.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/ctype.o ulib/libc/ctype.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stat.o ulib/libc/stat.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdlib.o ulib/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdio.o ulib/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/libc.a uobj/libc/string.o
+x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
+x86_64-elf-ranlib uobj/libc/libc.a
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/init.o user/init.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/init uobj/init.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/init > out/init.asm
+objdump -t fs/init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/init.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/desktop.o user/desktop.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/desktop uobj/desktop.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/desktop > out/desktop.asm
+objdump -t fs/desktop | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/desktop.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash.o user/bash.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash uobj/bash.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash > out/bash.asm
+objdump -t fs/bash | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cat.o user/cat.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cat uobj/cat.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cat > out/cat.asm
+objdump -t fs/cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cat.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/grep.o user/grep.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/grep uobj/grep.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/grep > out/grep.asm
+objdump -t fs/grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/grep.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mkdir.o user/mkdir.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mkdir uobj/mkdir.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mkdir > out/mkdir.asm
+objdump -t fs/mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mkdir.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/shell.o user/shell.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/shell uobj/shell.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/shell > out/shell.asm
+objdump -t fs/shell | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/shell.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/editor.o user/editor.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/editor uobj/editor.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/editor > out/editor.asm
+objdump -t fs/editor | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/editor.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/explorer.o user/explorer.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/explorer uobj/explorer.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/explorer > out/explorer.asm
+objdump -t fs/explorer | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/explorer.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/startWindow.o user/startWindow.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/startWindow uobj/startWindow.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/startWindow > out/startWindow.asm
+objdump -t fs/startWindow | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/startWindow.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ls.o user/ls.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ls uobj/ls.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ls > out/ls.asm
+objdump -t fs/ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ls.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/echo.o user/echo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/echo uobj/echo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/echo > out/echo.asm
+objdump -t fs/echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/echo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/daemon.o user/daemon.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/daemon uobj/daemon.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/daemon > out/daemon.asm
+objdump -t fs/daemon | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/daemon.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/clock.o user/clock.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/clock uobj/clock.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/clock > out/clock.asm
+objdump -t fs/clock | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/clock.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ps.o user/ps.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ps uobj/ps.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ps > out/ps.asm
+objdump -t fs/ps | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ps.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/demo.o user/demo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/demo uobj/demo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/demo > out/demo.asm
+objdump -t fs/demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/demo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cp.o user/cp.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cp uobj/cp.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cp > out/cp.asm
+objdump -t fs/cp | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cp.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mv.o user/mv.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mv uobj/mv.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mv > out/mv.asm
+objdump -t fs/mv | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mv.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/kill.o user/kill.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/kill uobj/kill.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/kill > out/kill.asm
+objdump -t fs/kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kill.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash2.o user/bash2.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash2 uobj/bash2.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash2 > out/bash2.asm
+objdump -t fs/bash2 | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash2.sym
+out/mkfs fs.img fs/init fs/desktop fs/bash fs/cat fs/grep fs/mkdir fs/shell fs/editor fs/explorer fs/startWindow fs/ls fs/echo fs/daemon fs/clock gui/test.bmp gui/clock.bmp gui/cli.bmp gui/explorer.bmp fs/ps gui/app.bmp fs/demo install.sh fs/cp fs/mv fs/kill fs/bash2 etc/amiga.cfg 
+size=4026
+used 16 (bit 1 ninode 13) free 16 log 10 total 4026
+name (1)=fs/init
+name (1)=fs/desktop
+name (1)=fs/bash
+name (1)=fs/cat
+name (1)=fs/grep
+name (1)=fs/mkdir
+name (1)=fs/shell
+name (1)=fs/editor
+name (1)=fs/explorer
+name (1)=fs/startWindow
+name (1)=fs/ls
+name (1)=fs/echo
+name (1)=fs/daemon
+name (1)=fs/clock
+name (1)=gui/test.bmp
+name (1)=gui/clock.bmp
+name (1)=gui/cli.bmp
+name (1)=gui/explorer.bmp
+name (1)=fs/ps
+name (1)=gui/app.bmp
+name (1)=fs/demo
+name (1)=install.sh
+name (1)=fs/cp
+name (1)=fs/mv
+name (1)=fs/kill
+name (1)=fs/bash2
+name (1)=etc/amiga.cfg
+balloc: first 2076 blocks have been allocated
+balloc: write bitmap block at sector 15
+dd if=/dev/zero of=xv6.img count=10000
+dd if=out/bootblock of=xv6.img conv=notrunc
+dd if=out/kernel.elf of=xv6.img seek=1 conv=notrunc
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -O -o out/bootmain.o -c kernel/bootmain.c
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -o out/bootasm.o -c kernel/bootasm.S
+x86_64-elf-ld  -m elf_i386 -nostdlib -N -e start -Ttext 0x7C00 -o out/bootblock.o out/bootasm.o out/bootmain.o
+objdump -S out/bootblock.o > out/bootblock.asm
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblock.o out/bootblock
+tools/sign.pl out/bootblock
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bio.o kernel/bio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/console.o kernel/console.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/exec.o kernel/exec.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/file.o kernel/file.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/fs.o kernel/fs.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ide.o kernel/ide.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ioapic.o kernel/ioapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kalloc.o kernel/kalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kbd.o kernel/kbd.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/lapic.o kernel/lapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/log.o kernel/log.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/main.o kernel/main.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mp.o kernel/mp.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/acpi.o kernel/acpi.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/picirq.o kernel/picirq.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pipe.o kernel/pipe.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/proc.o kernel/proc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/spinlock.o kernel/spinlock.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/string.o kernel/string.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/swtch64.o kernel/swtch64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/syscall.o kernel/syscall.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysfile.o kernel/sysfile.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysproc.o kernel/sysproc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/timer.o kernel/timer.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/trapasm64.o kernel/trapasm64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/trap.o kernel/trap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/uart.o kernel/uart.c
+perl tools/vectors64.pl > kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/vectors.o kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm.o kernel/vm.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/graphics.o kernel/graphics.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/window_manager.o kernel/window_manager.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mouse.o kernel/mouse.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/msg.o kernel/msg.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/cmos.o kernel/cmos.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bga.o kernel/bga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pci.o kernel/pci.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/gui.o kernel/gui.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/amiga/amiga.o kernel/amiga/amiga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdio.o kernel/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdlib.o kernel/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm64.o kernel/vm64.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/entry64.o kernel/entry64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -fno-pic -nostdinc -I. -o out/entryother.o -c kernel/entryother.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0x7000 -o out/bootblockother.o out/entryother.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblockother.o out/entryother
+objdump -S out/bootblockother.o > out/entryother.asm
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -nostdinc -I. -o out/initcode.o -c kernel/initcode64.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0 -o out/initcode.out out/initcode.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary out/initcode.out out/initcode
+objdump -S out/initcode.o > out/initcode.asm
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -T kernel/kernel64.ld -o out/kernel.elf kobj/entry64.o kobj/bio.o kobj/console.o kobj/exec.o kobj/file.o kobj/fs.o kobj/ide.o kobj/ioapic.o kobj/kalloc.o kobj/kbd.o kobj/lapic.o kobj/log.o kobj/main.o kobj/mp.o kobj/acpi.o kobj/picirq.o kobj/pipe.o kobj/proc.o kobj/spinlock.o kobj/string.o kobj/swtch64.o kobj/syscall.o kobj/sysfile.o kobj/sysproc.o kobj/timer.o kobj/trapasm64.o kobj/trap.o kobj/uart.o kobj/vectors.o kobj/vm.o kobj/graphics.o kobj/window_manager.o kobj/mouse.o kobj/msg.o kobj/cmos.o kobj/bga.o kobj/pci.o kobj/gui.o kobj/amiga/amiga.o kobj/libc/stdio.o kobj/libc/stdlib.o kobj/vm64.o -b binary out/initcode out/entryother 
+objdump -S out/kernel.elf > out/kernel.asm
+objdump -t out/kernel.elf | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kernel.sym
+gcc -Werror -Wall -o out/mkfs tools/mkfs.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o uobj/usys.o ulib/usys.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/printf.o ulib/printf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/umalloc.o ulib/umalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/hashtable.o ulib/hashtable.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/sprintf.o ulib/sprintf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_window.o ulib/user_window.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_handler.o ulib/user_handler.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bitmap.o ulib/bitmap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/parser.o shell_lib/parser.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/history.o shell_lib/history.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/input.o shell_lib/input.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/string.o ulib/libc/string.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/ctype.o ulib/libc/ctype.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stat.o ulib/libc/stat.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdlib.o ulib/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdio.o ulib/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/libc.a uobj/libc/string.o
+x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
+x86_64-elf-ranlib uobj/libc/libc.a
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/init.o user/init.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/init uobj/init.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/init > out/init.asm
+objdump -t fs/init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/init.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/desktop.o user/desktop.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/desktop uobj/desktop.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/desktop > out/desktop.asm
+objdump -t fs/desktop | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/desktop.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash.o user/bash.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash uobj/bash.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash > out/bash.asm
+objdump -t fs/bash | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cat.o user/cat.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cat uobj/cat.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cat > out/cat.asm
+objdump -t fs/cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cat.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/grep.o user/grep.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/grep uobj/grep.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/grep > out/grep.asm
+objdump -t fs/grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/grep.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mkdir.o user/mkdir.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mkdir uobj/mkdir.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mkdir > out/mkdir.asm
+objdump -t fs/mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mkdir.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/shell.o user/shell.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/shell uobj/shell.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/shell > out/shell.asm
+objdump -t fs/shell | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/shell.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/editor.o user/editor.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/editor uobj/editor.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/editor > out/editor.asm
+objdump -t fs/editor | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/editor.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/explorer.o user/explorer.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/explorer uobj/explorer.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/explorer > out/explorer.asm
+objdump -t fs/explorer | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/explorer.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/startWindow.o user/startWindow.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/startWindow uobj/startWindow.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/startWindow > out/startWindow.asm
+objdump -t fs/startWindow | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/startWindow.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ls.o user/ls.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ls uobj/ls.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ls > out/ls.asm
+objdump -t fs/ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ls.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/echo.o user/echo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/echo uobj/echo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/echo > out/echo.asm
+objdump -t fs/echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/echo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/daemon.o user/daemon.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/daemon uobj/daemon.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/daemon > out/daemon.asm
+objdump -t fs/daemon | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/daemon.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/clock.o user/clock.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/clock uobj/clock.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/clock > out/clock.asm
+objdump -t fs/clock | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/clock.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ps.o user/ps.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ps uobj/ps.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ps > out/ps.asm
+objdump -t fs/ps | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ps.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/demo.o user/demo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/demo uobj/demo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/demo > out/demo.asm
+objdump -t fs/demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/demo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cp.o user/cp.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cp uobj/cp.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cp > out/cp.asm
+objdump -t fs/cp | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cp.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mv.o user/mv.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mv uobj/mv.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mv > out/mv.asm
+objdump -t fs/mv | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mv.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/kill.o user/kill.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/kill uobj/kill.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/kill > out/kill.asm
+objdump -t fs/kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kill.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash2.o user/bash2.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash2 uobj/bash2.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash2 > out/bash2.asm
+objdump -t fs/bash2 | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash2.sym
+out/mkfs fs.img fs/init fs/desktop fs/bash fs/cat fs/grep fs/mkdir fs/shell fs/editor fs/explorer fs/startWindow fs/ls fs/echo fs/daemon fs/clock gui/test.bmp gui/clock.bmp gui/cli.bmp gui/explorer.bmp fs/ps gui/app.bmp fs/demo install.sh fs/cp fs/mv fs/kill fs/bash2 etc/amiga.cfg 
+size=4026
+used 16 (bit 1 ninode 13) free 16 log 10 total 4026
+name (1)=fs/init
+name (1)=fs/desktop
+name (1)=fs/bash
+name (1)=fs/cat
+name (1)=fs/grep
+name (1)=fs/mkdir
+name (1)=fs/shell
+name (1)=fs/editor
+name (1)=fs/explorer
+name (1)=fs/startWindow
+name (1)=fs/ls
+name (1)=fs/echo
+name (1)=fs/daemon
+name (1)=fs/clock
+name (1)=gui/test.bmp
+name (1)=gui/clock.bmp
+name (1)=gui/cli.bmp
+name (1)=gui/explorer.bmp
+name (1)=fs/ps
+name (1)=gui/app.bmp
+name (1)=fs/demo
+name (1)=install.sh
+name (1)=fs/cp
+name (1)=fs/mv
+name (1)=fs/kill
+name (1)=fs/bash2
+name (1)=etc/amiga.cfg
+balloc: first 2076 blocks have been allocated
+balloc: write bitmap block at sector 15
+dd if=/dev/zero of=xv6.img count=10000
+dd if=out/bootblock of=xv6.img conv=notrunc
+dd if=out/kernel.elf of=xv6.img seek=1 conv=notrunc
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -O -o out/bootmain.o -c kernel/bootmain.c
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -o out/bootasm.o -c kernel/bootasm.S
+x86_64-elf-ld  -m elf_i386 -nostdlib -N -e start -Ttext 0x7C00 -o out/bootblock.o out/bootasm.o out/bootmain.o
+objdump -S out/bootblock.o > out/bootblock.asm
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblock.o out/bootblock
+tools/sign.pl out/bootblock
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bio.o kernel/bio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/console.o kernel/console.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/exec.o kernel/exec.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/file.o kernel/file.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/fs.o kernel/fs.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ide.o kernel/ide.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ioapic.o kernel/ioapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kalloc.o kernel/kalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kbd.o kernel/kbd.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/lapic.o kernel/lapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/log.o kernel/log.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/main.o kernel/main.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mp.o kernel/mp.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/acpi.o kernel/acpi.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/picirq.o kernel/picirq.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pipe.o kernel/pipe.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/proc.o kernel/proc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/spinlock.o kernel/spinlock.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/string.o kernel/string.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/swtch64.o kernel/swtch64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/syscall.o kernel/syscall.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysfile.o kernel/sysfile.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysproc.o kernel/sysproc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/timer.o kernel/timer.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/trapasm64.o kernel/trapasm64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/trap.o kernel/trap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/uart.o kernel/uart.c
+perl tools/vectors64.pl > kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/vectors.o kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm.o kernel/vm.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/graphics.o kernel/graphics.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/window_manager.o kernel/window_manager.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mouse.o kernel/mouse.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/msg.o kernel/msg.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/cmos.o kernel/cmos.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bga.o kernel/bga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pci.o kernel/pci.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/gui.o kernel/gui.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/amiga/amiga.o kernel/amiga/amiga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdio.o kernel/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdlib.o kernel/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm64.o kernel/vm64.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/entry64.o kernel/entry64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -fno-pic -nostdinc -I. -o out/entryother.o -c kernel/entryother.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0x7000 -o out/bootblockother.o out/entryother.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblockother.o out/entryother
+objdump -S out/bootblockother.o > out/entryother.asm
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -nostdinc -I. -o out/initcode.o -c kernel/initcode64.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0 -o out/initcode.out out/initcode.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary out/initcode.out out/initcode
+objdump -S out/initcode.o > out/initcode.asm
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -T kernel/kernel64.ld -o out/kernel.elf kobj/entry64.o kobj/bio.o kobj/console.o kobj/exec.o kobj/file.o kobj/fs.o kobj/ide.o kobj/ioapic.o kobj/kalloc.o kobj/kbd.o kobj/lapic.o kobj/log.o kobj/main.o kobj/mp.o kobj/acpi.o kobj/picirq.o kobj/pipe.o kobj/proc.o kobj/spinlock.o kobj/string.o kobj/swtch64.o kobj/syscall.o kobj/sysfile.o kobj/sysproc.o kobj/timer.o kobj/trapasm64.o kobj/trap.o kobj/uart.o kobj/vectors.o kobj/vm.o kobj/graphics.o kobj/window_manager.o kobj/mouse.o kobj/msg.o kobj/cmos.o kobj/bga.o kobj/pci.o kobj/gui.o kobj/amiga/amiga.o kobj/libc/stdio.o kobj/libc/stdlib.o kobj/vm64.o -b binary out/initcode out/entryother 
+objdump -S out/kernel.elf > out/kernel.asm
+objdump -t out/kernel.elf | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kernel.sym
+gcc -Werror -Wall -o out/mkfs tools/mkfs.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o uobj/usys.o ulib/usys.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/printf.o ulib/printf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/umalloc.o ulib/umalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/hashtable.o ulib/hashtable.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/sprintf.o ulib/sprintf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_window.o ulib/user_window.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_handler.o ulib/user_handler.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bitmap.o ulib/bitmap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/parser.o shell_lib/parser.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/history.o shell_lib/history.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/input.o shell_lib/input.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/string.o ulib/libc/string.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/ctype.o ulib/libc/ctype.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stat.o ulib/libc/stat.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdlib.o ulib/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdio.o ulib/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/libc.a uobj/libc/string.o
+x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
+x86_64-elf-ranlib uobj/libc/libc.a
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/init.o user/init.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/init uobj/init.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/init > out/init.asm
+objdump -t fs/init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/init.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/desktop.o user/desktop.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/desktop uobj/desktop.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/desktop > out/desktop.asm
+objdump -t fs/desktop | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/desktop.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash.o user/bash.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash uobj/bash.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash > out/bash.asm
+objdump -t fs/bash | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cat.o user/cat.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cat uobj/cat.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cat > out/cat.asm
+objdump -t fs/cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cat.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/grep.o user/grep.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/grep uobj/grep.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/grep > out/grep.asm
+objdump -t fs/grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/grep.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mkdir.o user/mkdir.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mkdir uobj/mkdir.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mkdir > out/mkdir.asm
+objdump -t fs/mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mkdir.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/shell.o user/shell.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/shell uobj/shell.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/shell > out/shell.asm
+objdump -t fs/shell | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/shell.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/editor.o user/editor.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/editor uobj/editor.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/editor > out/editor.asm
+objdump -t fs/editor | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/editor.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/explorer.o user/explorer.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/explorer uobj/explorer.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/explorer > out/explorer.asm
+objdump -t fs/explorer | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/explorer.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/startWindow.o user/startWindow.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/startWindow uobj/startWindow.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/startWindow > out/startWindow.asm
+objdump -t fs/startWindow | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/startWindow.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ls.o user/ls.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ls uobj/ls.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ls > out/ls.asm
+objdump -t fs/ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ls.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/echo.o user/echo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/echo uobj/echo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/echo > out/echo.asm
+objdump -t fs/echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/echo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/daemon.o user/daemon.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/daemon uobj/daemon.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/daemon > out/daemon.asm
+objdump -t fs/daemon | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/daemon.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/clock.o user/clock.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/clock uobj/clock.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/clock > out/clock.asm
+objdump -t fs/clock | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/clock.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ps.o user/ps.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ps uobj/ps.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ps > out/ps.asm
+objdump -t fs/ps | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ps.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/demo.o user/demo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/demo uobj/demo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/demo > out/demo.asm
+objdump -t fs/demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/demo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cp.o user/cp.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cp uobj/cp.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cp > out/cp.asm
+objdump -t fs/cp | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cp.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mv.o user/mv.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mv uobj/mv.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mv > out/mv.asm
+objdump -t fs/mv | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mv.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/kill.o user/kill.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/kill uobj/kill.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/kill > out/kill.asm
+objdump -t fs/kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kill.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash2.o user/bash2.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash2 uobj/bash2.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash2 > out/bash2.asm
+objdump -t fs/bash2 | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash2.sym
+out/mkfs fs.img fs/init fs/desktop fs/bash fs/cat fs/grep fs/mkdir fs/shell fs/editor fs/explorer fs/startWindow fs/ls fs/echo fs/daemon fs/clock gui/test.bmp gui/clock.bmp gui/cli.bmp gui/explorer.bmp fs/ps gui/app.bmp fs/demo install.sh fs/cp fs/mv fs/kill fs/bash2 etc/amiga.cfg 
+size=4026
+used 16 (bit 1 ninode 13) free 16 log 10 total 4026
+name (1)=fs/init
+name (1)=fs/desktop
+name (1)=fs/bash
+name (1)=fs/cat
+name (1)=fs/grep
+name (1)=fs/mkdir
+name (1)=fs/shell
+name (1)=fs/editor
+name (1)=fs/explorer
+name (1)=fs/startWindow
+name (1)=fs/ls
+name (1)=fs/echo
+name (1)=fs/daemon
+name (1)=fs/clock
+name (1)=gui/test.bmp
+name (1)=gui/clock.bmp
+name (1)=gui/cli.bmp
+name (1)=gui/explorer.bmp
+name (1)=fs/ps
+name (1)=gui/app.bmp
+name (1)=fs/demo
+name (1)=install.sh
+name (1)=fs/cp
+name (1)=fs/mv
+name (1)=fs/kill
+name (1)=fs/bash2
+name (1)=etc/amiga.cfg
+balloc: first 2076 blocks have been allocated
+balloc: write bitmap block at sector 15
+dd if=/dev/zero of=xv6.img count=10000
+dd if=out/bootblock of=xv6.img conv=notrunc
+dd if=out/kernel.elf of=xv6.img seek=1 conv=notrunc
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -O -o out/bootmain.o -c kernel/bootmain.c
+x86_64-elf-gcc  -fno-builtin -fno-pic -m32 -nostdinc -Iinclude -o out/bootasm.o -c kernel/bootasm.S
+x86_64-elf-ld  -m elf_i386 -nostdlib -N -e start -Ttext 0x7C00 -o out/bootblock.o out/bootasm.o out/bootmain.o
+objdump -S out/bootblock.o > out/bootblock.asm
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblock.o out/bootblock
+tools/sign.pl out/bootblock
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bio.o kernel/bio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/console.o kernel/console.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/exec.o kernel/exec.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/file.o kernel/file.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/fs.o kernel/fs.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ide.o kernel/ide.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/ioapic.o kernel/ioapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kalloc.o kernel/kalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/kbd.o kernel/kbd.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/lapic.o kernel/lapic.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/log.o kernel/log.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/main.o kernel/main.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mp.o kernel/mp.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/acpi.o kernel/acpi.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/picirq.o kernel/picirq.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pipe.o kernel/pipe.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/proc.o kernel/proc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/spinlock.o kernel/spinlock.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/string.o kernel/string.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/swtch64.o kernel/swtch64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/syscall.o kernel/syscall.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysfile.o kernel/sysfile.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/sysproc.o kernel/sysproc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/timer.o kernel/timer.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/trapasm64.o kernel/trapasm64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/trap.o kernel/trap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/uart.o kernel/uart.c
+perl tools/vectors64.pl > kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/vectors.o kernel/vectors.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm.o kernel/vm.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/graphics.o kernel/graphics.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/window_manager.o kernel/window_manager.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/mouse.o kernel/mouse.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/msg.o kernel/msg.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/cmos.o kernel/cmos.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/bga.o kernel/bga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/pci.o kernel/pci.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/gui.o kernel/gui.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/amiga/amiga.o kernel/amiga/amiga.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdio.o kernel/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/libc/stdlib.o kernel/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o kobj/vm64.o kernel/vm64.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o kobj/entry64.o kernel/entry64.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -fno-pic -nostdinc -I. -o out/entryother.o -c kernel/entryother.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0x7000 -o out/bootblockother.o out/entryother.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary -j .text out/bootblockother.o out/entryother
+objdump -S out/bootblockother.o > out/entryother.asm
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -nostdinc -I. -o out/initcode.o -c kernel/initcode64.S
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e start -Ttext 0 -o out/initcode.out out/initcode.o
+/opt/homebrew/opt/llvm/bin/llvm-objcopy  -S -O binary out/initcode.out out/initcode
+objdump -S out/initcode.o > out/initcode.asm
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -T kernel/kernel64.ld -o out/kernel.elf kobj/entry64.o kobj/bio.o kobj/console.o kobj/exec.o kobj/file.o kobj/fs.o kobj/ide.o kobj/ioapic.o kobj/kalloc.o kobj/kbd.o kobj/lapic.o kobj/log.o kobj/main.o kobj/mp.o kobj/acpi.o kobj/picirq.o kobj/pipe.o kobj/proc.o kobj/spinlock.o kobj/string.o kobj/swtch64.o kobj/syscall.o kobj/sysfile.o kobj/sysproc.o kobj/timer.o kobj/trapasm64.o kobj/trap.o kobj/uart.o kobj/vectors.o kobj/vm.o kobj/graphics.o kobj/window_manager.o kobj/mouse.o kobj/msg.o kobj/cmos.o kobj/bga.o kobj/pci.o kobj/gui.o kobj/amiga/amiga.o kobj/libc/stdio.o kobj/libc/stdlib.o kobj/vm64.o -b binary out/initcode out/entryother 
+objdump -S out/kernel.elf > out/kernel.asm
+objdump -t out/kernel.elf | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kernel.sym
+gcc -Werror -Wall -o out/mkfs tools/mkfs.c
+x86_64-elf-gcc  -fno-pic -gdwarf-2 -Wa,-divide -Iinclude -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -c -o uobj/usys.o ulib/usys.S
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/printf.o ulib/printf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/umalloc.o ulib/umalloc.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/hashtable.o ulib/hashtable.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/sprintf.o ulib/sprintf.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_window.o ulib/user_window.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/user_handler.o ulib/user_handler.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bitmap.o ulib/bitmap.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/parser.o shell_lib/parser.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/history.o shell_lib/history.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o shell_obj/input.o shell_lib/input.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/string.o ulib/libc/string.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/ctype.o ulib/libc/ctype.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stat.o ulib/libc/stat.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdlib.o ulib/libc/stdlib.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/stdio.o ulib/libc/stdio.c
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/libc/libc.a uobj/libc/string.o
+x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
+x86_64-elf-ranlib uobj/libc/libc.a
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/init.o user/init.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/init uobj/init.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/init > out/init.asm
+objdump -t fs/init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/init.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/desktop.o user/desktop.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/desktop uobj/desktop.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/desktop > out/desktop.asm
+objdump -t fs/desktop | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/desktop.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash.o user/bash.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash uobj/bash.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash > out/bash.asm
+objdump -t fs/bash | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cat.o user/cat.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cat uobj/cat.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cat > out/cat.asm
+objdump -t fs/cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cat.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/grep.o user/grep.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/grep uobj/grep.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/grep > out/grep.asm
+objdump -t fs/grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/grep.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mkdir.o user/mkdir.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mkdir uobj/mkdir.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mkdir > out/mkdir.asm
+objdump -t fs/mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mkdir.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/shell.o user/shell.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/shell uobj/shell.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/shell > out/shell.asm
+objdump -t fs/shell | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/shell.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/editor.o user/editor.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/editor uobj/editor.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/editor > out/editor.asm
+objdump -t fs/editor | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/editor.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/explorer.o user/explorer.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/explorer uobj/explorer.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/explorer > out/explorer.asm
+objdump -t fs/explorer | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/explorer.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/startWindow.o user/startWindow.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/startWindow uobj/startWindow.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/startWindow > out/startWindow.asm
+objdump -t fs/startWindow | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/startWindow.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ls.o user/ls.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ls uobj/ls.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ls > out/ls.asm
+objdump -t fs/ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ls.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/echo.o user/echo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/echo uobj/echo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/echo > out/echo.asm
+objdump -t fs/echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/echo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/daemon.o user/daemon.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/daemon uobj/daemon.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/daemon > out/daemon.asm
+objdump -t fs/daemon | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/daemon.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/clock.o user/clock.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/clock uobj/clock.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/clock > out/clock.asm
+objdump -t fs/clock | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/clock.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/ps.o user/ps.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/ps uobj/ps.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/ps > out/ps.asm
+objdump -t fs/ps | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/ps.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/demo.o user/demo.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/demo uobj/demo.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/demo > out/demo.asm
+objdump -t fs/demo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/demo.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/cp.o user/cp.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/cp uobj/cp.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/cp > out/cp.asm
+objdump -t fs/cp | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/cp.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/mv.o user/mv.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/mv uobj/mv.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/mv > out/mv.asm
+objdump -t fs/mv | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/mv.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/kill.o user/kill.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/kill uobj/kill.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/kill > out/kill.asm
+objdump -t fs/kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/kill.sym
+x86_64-elf-gcc  -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone -O0  -fno-stack-protector -c -o uobj/bash2.o user/bash2.c
+x86_64-elf-ld  -m elf_x86_64 -nostdlib  -N -e main -Ttext 0 -o fs/bash2 uobj/bash2.o uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o shell_obj/parser.o shell_obj/history.o shell_obj/input.o uobj/libc/libc.a
+objdump -S fs/bash2 > out/bash2.asm
+objdump -t fs/bash2 | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > out/bash2.sym
+out/mkfs fs.img fs/init fs/desktop fs/bash fs/cat fs/grep fs/mkdir fs/shell fs/editor fs/explorer fs/startWindow fs/ls fs/echo fs/daemon fs/clock gui/test.bmp gui/clock.bmp gui/cli.bmp gui/explorer.bmp fs/ps gui/app.bmp fs/demo install.sh fs/cp fs/mv fs/kill fs/bash2 etc/amiga.cfg 
+size=4026
+used 16 (bit 1 ninode 13) free 16 log 10 total 4026
+name (1)=fs/init
+name (1)=fs/desktop
+name (1)=fs/bash
+name (1)=fs/cat
+name (1)=fs/grep
+name (1)=fs/mkdir
+name (1)=fs/shell
+name (1)=fs/editor
+name (1)=fs/explorer
+name (1)=fs/startWindow
+name (1)=fs/ls
+name (1)=fs/echo
+name (1)=fs/daemon
+name (1)=fs/clock
+name (1)=gui/test.bmp
+name (1)=gui/clock.bmp
+name (1)=gui/cli.bmp
+name (1)=gui/explorer.bmp
+name (1)=fs/ps
+name (1)=gui/app.bmp
+name (1)=fs/demo
+name (1)=install.sh
+name (1)=fs/cp
+name (1)=fs/mv
+name (1)=fs/kill
+name (1)=fs/bash2
+name (1)=etc/amiga.cfg
+balloc: first 2076 blocks have been allocated
+balloc: write bitmap block at sector 15
+dd if=/dev/zero of=xv6.img count=10000
+dd if=out/bootblock of=xv6.img conv=notrunc
+dd if=out/kernel.elf of=xv6.img seek=1 conv=notrunc

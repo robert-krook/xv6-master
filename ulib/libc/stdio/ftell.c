@@ -1,0 +1,6 @@
+
+void 
+ftell (void)
+{
+
+}
