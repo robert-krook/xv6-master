@@ -10,7 +10,7 @@ if -f bin; then
     mkdir bin
     mkdir usr ; mkdir usr/bin
     mkdir usr/icons
-
+ 
 # Copy the files
     mv cat bin/cat
     cp cp bin/cp

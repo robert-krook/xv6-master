@@ -10,7 +10,6 @@
 #include <unistd.h>
 #include <string.h>
 
-
 #define EXTENSION_INTRODUCER   0x21
 #define IMAGE_DESCRIPTOR       0x2C
 #define TRAILER                0x3B

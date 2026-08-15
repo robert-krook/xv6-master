@@ -13,7 +13,7 @@
 #include <string.h>
 
 #define PRINT_ERROR(a, args...) printf("ERROR %s() %s Line %d: " a "\n", __FUNCTION__, __FILE__, __LINE__, ##args);
-
+ 
 typedef struct {
 	union { int width,  w; };
 	union { int height, h; };
