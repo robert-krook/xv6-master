@@ -122,6 +122,8 @@ printf (int fd, char *fmt, ...)
             } else if(c == 'c') {
                 putc(fd, va_arg(ap, uint));
             } else if(c == 'f') {
+                putc (fd, 'h');
+                putc (fd, 'i');
                 return;
             } else if(c == '%') {
                 putc(fd, c);

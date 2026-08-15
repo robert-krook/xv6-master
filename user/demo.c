@@ -162,22 +162,22 @@ initGame ()
 
     win_rect *bird_position = &programWindow.widgets [birdId].position;
 
-float i = 2.5;
-i = i * 3;
-i = i + 2.5;
+ float i = 2.5;
+ i = i * 3;
+ i = i + 2.5;
 
-int j = i;
+ int j = i;
 
-char l [128];
+ char l [128];
 
-while (i<20) {
+// while (i<20) {
 
-ftoa (i, l, 3);
-printf (0, "Value = %s\n", l);
-i = i + 0.25;
-}
+ ftoa (1.23, l, 3);
+// printf (0, "Value = %s\n", l);
+// i = i + 0.25;
+// }
 
-//printf (0,"Value = %f\n", i);
+// printf (0,"Value = %f\n", 2.75);
 
     bird_position->xmin = programWindow.width / 2 - birdWidth / 1.75;
     bird_position->ymin = programWindow.height / 2 - birdHeight / 1.75;

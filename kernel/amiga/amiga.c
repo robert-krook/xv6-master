@@ -110,6 +110,8 @@ amiga_read_config ()
     int n = 0;
     int section = 0;
     
+return 1;
+
     int fd = fopen ("/etc/amiga.cfg", O_RDONLY);
     if (fd<0) {
         cprintf ("Unable to open file\n");
