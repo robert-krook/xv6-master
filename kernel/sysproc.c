@@ -14,6 +14,8 @@
 #include "gui/gui.h"
 #include "bga.h"
 
+#include "process_info.h"
+
 int
 sys_chpr (void)
 {
@@ -230,4 +232,17 @@ sys_init_graphics (void)
 
 gui_init_graphics ();
 	return 0; 
+}
+
+// (...)
+int 
+sys_get_processes_info (void)
+{
+    struct process_info *process_info_table;
+
+    if (argptr (0,(char**) &process_info_table, sizeof (struct process_info) * NPROC) < 0) {
+        return -1;
+    }
+
+    return get_processes_info (process_info_table);
 }

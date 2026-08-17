@@ -4,6 +4,7 @@
 #include "gui/bitmap.h"
 #include "gui/user_window.h"
 
+#include "process_info.h"
 
 struct stat;
 struct cmos_time_struct;
@@ -133,3 +134,4 @@ int add_image (window *win, unsigned char *filename, unsigned char *name, int x,
 
 int chpr (int pid, int priority);
 
+int get_processes_info (struct process_info * process_info_table);

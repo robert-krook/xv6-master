@@ -1,9 +1,12 @@
-# Context switch
+
+#   Context switch
 #
 #   void swtch(struct context **old, struct context *new);
 # 
-# Save current register context in old
-# and then load register context from new.
+#   Save current register context in old
+#   and then load register context from new.
+#
+#   
 
 .globl swtch
 swtch:
@@ -15,6 +18,8 @@ swtch:
   push %r13
   push %r14
   push %r15
+
+#fxsave (%rdi)
 
   # Switch stacks
   mov %rsp, (%rdi)

@@ -72,6 +72,7 @@ printf (int fd, char *fmt, ...)
     int c, i, state;
 
     char prefix [10];       // Prefix for string or integer
+    char precision [10];    // Precision (behind the comma)
 
     va_start (ap, fmt);
 
@@ -93,7 +94,7 @@ printf (int fd, char *fmt, ...)
         } else if(state == '%') {
             
             if(c == 'd') {
-                printint(fd, va_arg(ap, int), 10, 1);
+                printint (fd, va_arg(ap, int), 10, 1);
 
             } else if(c == 'x' || c == 'p') {
                 printint(fd, va_arg(ap, int), 16, 0);
@@ -121,12 +122,21 @@ printf (int fd, char *fmt, ...)
 
             } else if(c == 'c') {
                 putc(fd, va_arg(ap, uint));
+
             } else if(c == 'f') {
+                
                 putc (fd, 'h');
                 putc (fd, 'i');
+
+                double g = va_arg (ap, double);
+                int k = (int) g;
+                printint(fd, k, 10, 1);
+
                 return;
+
             } else if(c == '%') {
                 putc(fd, c);
+
             } else {
                 if (!isdigit (c)) {
                     // Unknown % sequence.  Print it to draw attention. It could be
@@ -135,6 +145,7 @@ printf (int fd, char *fmt, ...)
                     putc(fd, c);
                     state = 0;
                 } else {
+                    // We got the format of %2.2f for example.
                     int j = 0;
                     while (isdigit (c)) {
                         prefix [j] = c;
@@ -143,6 +154,10 @@ printf (int fd, char *fmt, ...)
                         if (i>strlen (fmt))
                             return;
                         c = fmt[i] & 0xff;
+                    }
+                    if (c=='.')
+                    {
+                        // We have to go for the Precision 
                     }
                     i--;
                 }

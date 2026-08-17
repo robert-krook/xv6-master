@@ -3,6 +3,9 @@
  */
 
 #include "types.h"
+
+#include "process_info.h"
+
 #include "defs.h"
 #include "param.h"
 #include "memlayout.h"
@@ -387,6 +390,9 @@ scheduler (void)
         if (p == &ptable.proc [NPROC])
             hlt ();
 
+// save fpu
+//asm volatile("fxsave %0" : "=m"(myproc()->fpu_state) : : "memory");
+
 struct proc *highP = nullptr;
 
         // Loop over process table looking for process to run.
@@ -420,6 +426,8 @@ p = highP;
             proc = p;
 
             switchuvm (p);
+
+  //asm volatile("fxrstor %0" : : "m"(p->fpu_state) : "memory");
 
             p->state = RUNNING;
 
@@ -652,4 +660,41 @@ ps (void)
     release(&ptable.lock);
 
     return 192;
+}
+
+// (...)
+int 
+get_processes_info (struct process_info *process_info_table) 
+{
+    struct proc *p;  
+    int count = 0;
+    int i;
+
+    for (i = 0, p = ptable.proc; p < &ptable.proc[NPROC] && i < NPROC; i++,p++) {
+        
+        if(p->state == UNUSED) {
+            continue;
+        }
+
+        count++;
+
+        process_info_table[i].pid = p->pid;
+        
+        if(i == 0) {
+            process_info_table[i].ppid = 0;
+        } else {
+            process_info_table[i].ppid = p->parent->pid;
+        }
+   
+        process_info_table[i].state = p->state;
+        process_info_table[i].sz = p->sz;
+
+        for (int j = 0; j < 16; j++) {
+            process_info_table[i].name[j] = p->name[j];
+        }
+    }
+
+    p = nullptr;
+
+    return count;
 }

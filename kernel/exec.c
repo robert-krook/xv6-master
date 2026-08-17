@@ -111,7 +111,7 @@ exec (char *path, char **argv)
     proc->tf->rdi = argc;
     proc->tf->rsi = sp - (argc+1)*sizeof(uintp);
 
-cprintf ("Prio = %d\n", proc->priority);
+//cprintf ("Prio = %d\n", proc->priority);
 
 #endif
 

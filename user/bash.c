@@ -265,9 +265,9 @@ runInternalCommand (struct execcmd *ecmd)
 	if (!strcmp (ecmd->argv[0], "echo"))
         Command = INT_ECHO;
 
-    if (!strcmp(ecmd->argv[0], "ps")) {
-        Command = INT_PS;
-    }
+    // if (!strcmp(ecmd->argv[0], "ps")) {
+    //     Command = INT_PS;
+    // }
 
     if (!strcmp(ecmd->argv[0], "pwd")) {
         Command = INT_PWD;

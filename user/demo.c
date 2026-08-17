@@ -9,6 +9,8 @@
 #include "user.h"
 
 #include "stdarg.h"
+#include "libc/stdlib.h"
+#include "math.h"
 
 #define columnPairs 3
 
@@ -43,118 +45,6 @@ int collisionDetection(win_rect *rec1, win_rect *rec2)
     return 1;
 }
 
-////////////////
-
-//  #define EXP_A 184
-//     #define EXP_C 16249 
-
-//     float EXP(float y)
-//     {
-//       union
-//       {
-//         float d;
-//         struct
-//         {
-//     #ifdef LITTLE_ENDIAN
-//           short j, i;
-//     #else
-//           short i, j;
-//     #endif
-//         } n;
-//       } eco;
-//       eco.n.i = EXP_A*(y) + (EXP_C);
-//       eco.n.j = 0;
-//       return eco.d;
-//     }
-
-//     float LOG(float y)
-//     {
-//       int * nTemp = (int*)&y;
-//       y = (*nTemp) >> 16;
-//       return (y - EXP_C) / EXP_A;
-//     }
-
-//     float pow(float b, float p)
-//     {
-//       return EXP(LOG(b) * p);
-//     }
-
-int pow(int a, int b) 
-{ 
-    if (b == 0) 
-        return 1; 
-    int answer = a; 
-    int increment = a; 
-    int i, j; 
-    for(i = 1; i < b; i++) 
-    { 
-        for(j = 1; j < a; j++) 
-        { 
-            answer += increment; 
-        } 
-        increment = answer; 
-    } 
-    return answer; 
-} 
-
-
-
-void 
-reverse (char *str, int len)
-{
-    int i = 0, j = len - 1, temp;
-
-    while (i < j) {
-        temp = str [i];
-        str [i] = str [j];
-        str [j] = temp;
-        i++;
-        j--;
-    }
-
-}
-
-int 
-int2str (int x, char str[], int d)
-{
-    int i = 0;
-    while (x) {
-        str [i++] = (x % 10) + '0';
-        x = x / 10;
-    }
-
-    while (i < d) {
-        str [i++] = '0';
-    }
-
-    reverse (str, i);
-    str [i] = '\0';
-    return i;
-}
-
-void
-ftoa (float n, char *result, int precision)
-{
-    int ipart = (int) n;
-
-    float fpart = n  - (float) ipart;
-
-    int i = int2str (ipart, result, 0);
-
-    if (precision != 0) {
-        result [i] = '.';
-
-        fpart = fpart * pow(10, precision);
-
-        int2str ((int) fpart, result + i + 1, precision);
-    }
-
-}
-
-
-
-///////////////
-
 void 
 initGame ()
 {
@@ -177,7 +67,7 @@ initGame ()
 // i = i + 0.25;
 // }
 
-// printf (0,"Value = %f\n", 2.75);
+ printf (0,"Value = %f\n", 2.75);
 
     bird_position->xmin = programWindow.width / 2 - birdWidth / 1.75;
     bird_position->ymin = programWindow.height / 2 - birdHeight / 1.75;

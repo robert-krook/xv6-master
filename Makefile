@@ -121,7 +121,8 @@ LIBC_SRC := \
 	uobj/libc/ctype.o \
 	uobj/libc/stat.o \
 	uobj/libc/stdlib.o \
-	uobj/libc/stdio.o
+	uobj/libc/stdio.o \
+	uobj/libc/math.o
 
 # Compile the libraries
 uobj/libc/%.o: $(LIBC_SRC)

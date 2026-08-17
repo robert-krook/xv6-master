@@ -15,6 +15,7 @@ struct spinlock;
 struct stat;
 struct superblock;
 struct cmos_time_struct;
+struct process_info;
 
 struct message;
 
@@ -266,3 +267,5 @@ void    cmostime (struct cmos_time_struct *r);
 void    search_madt ();
 
 int     chpr (int pid, int priority);
+
+int     get_processes_info (struct process_info *process_info_table);

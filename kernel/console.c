@@ -5,6 +5,11 @@
  *  Console input and output.
  *  Input is from the keyboard or serial port.
  *  Output is written to the screen and serial port.
+ * 
+ *  To Do
+ *  -----
+ *  [ ] - Change the color of the console from user mode.
+ * 
  */
 
 #include <stdarg.h>
@@ -21,23 +26,25 @@
 #include "proc.h"
 #include "x86.h"
 
-static void consputc(int);
+static void consputc (int);
 
 static int panicked = 0;
 
 static struct {
   struct spinlock lock;
   int locking;
+  int pos;
 } cons;
 
 static char digits[] = "0123456789abcdef";
 
 static void
-printptr(uintp x) 
+printptr (uintp x) 
 {
-  int i;
-  for (i = 0; i < (sizeof(uintp) * 2); i++, x <<= 4)
-    consputc(digits[x >> (sizeof(uintp) * 8 - 4)]);
+    int i;
+
+    for (i = 0; i < (sizeof(uintp) * 2); i++, x <<= 4)
+        consputc(digits[x >> (sizeof(uintp) * 8 - 4)]);
 }
 
 static void
@@ -240,22 +247,17 @@ cgaputc (int c)
     outb(CRTPORT, 15);
     outb(CRTPORT+1, pos);
 
-//
+    cons.pos = pos;
 
+    // Change the cursor shape from a line to a block cursor and blinking
     outb(CRTPORT, 0x0A);
     outb(CRTPORT+1, 0);
 
     outb(CRTPORT, 0x0B);
     outb(CRTPORT+1, 16);
 
-
-//
-
-
-
-
-
-    crt[pos] = ' ' | 0x0B00;
+    //crt[pos] = ' ' | 0x0B00;
+    crt[pos] = ' ' | 0x0A00;
 }
 
 void
@@ -267,9 +269,19 @@ consputc(int c)
             ;
     }
 
-    if(c == BACKSPACE){
+    if(c == BACKSPACE) {
         uartputc('\b'); uartputc(' '); uartputc('\b');
-    } else
+    } 
+    else if(c == '\t'){
+        // Assuming a tab stop every 8 columns
+        int spaces = 8 - (cons.pos % 8); 
+        while(spaces > 0) {
+            consputc(' ');
+            spaces--;
+        }
+        return;
+    }
+    else
         uartputc(c);
     cgaputc(c);
 }
