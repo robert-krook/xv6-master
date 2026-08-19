@@ -1,5 +1,8 @@
 
+#include "types.h"
+#include "libc/string.h"
 #include "math.h"
+#include "libc/stdlib.h"
 
 int 
 setenv (const char *name, const char *value, int overwrite)
@@ -70,3 +73,41 @@ ftoa (float n, char *result, int precision)
     }
 
 }
+
+void
+itoa (int xx, char *str, int base, int sgn)
+{
+    static char digits[] = "0123456789ABCDEF";
+    char buf[16];
+    int i, neg;
+    uint x;
+
+    neg = 0;
+    
+    if (sgn && xx < 0) {
+        neg = 1;
+        x = -xx;
+    } else {
+        x = xx;
+    }
+
+    i = 0;
+
+    do {
+        buf[i++] = digits[x % base];
+    } while ((x /= base) != 0);
+    
+    if (neg)
+        buf[i++] = '-';
+
+
+int j = 0;
+
+    while(--i >= 0)
+         str [j++] = buf[i];
+
+str [j++] = '\0';
+
+    //strncpy (str, buf, strlen (buf));
+}
+

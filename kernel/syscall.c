@@ -185,6 +185,7 @@ extern int sys_GUI_get_style (void);
 extern int sys_chpr (void);
 extern int sys_change_console_colors (void);
 extern int sys_get_processes_info (void);
+extern int sys_halt (void);
 
 static int (*syscalls[])(void) = 
 {
@@ -234,6 +235,7 @@ static int (*syscalls[])(void) =
     [SYS_chpr]                  sys_chpr,
     [SYS_change_console_colors] sys_change_console_colors,
     [SYS_get_processes_info]    sys_get_processes_info,
+    [SYS_halt]                  sys_halt,
 };
 
 void

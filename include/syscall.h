@@ -54,3 +54,4 @@
 
 #define SYS_change_console_colors   46
 #define SYS_get_processes_info      47
+#define SYS_halt                    48

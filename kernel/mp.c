@@ -202,7 +202,7 @@ mpinit (void)
         switch(*p) {
 
         case MPPROC:
-        cprintf ("MPPROC\n");
+//        cprintf ("MPPROC\n");
             proc = (struct mpproc*)p;
             cprintf("mpinit ncpu=%d apicid=%d\n", ncpu, proc->apicid);
             if(proc->flags & MPBOOT)
@@ -214,20 +214,20 @@ mpinit (void)
             continue;
                 
         case MPIOAPIC:
-cprintf ("MPIOAPIC\n");        
+//cprintf ("MPIOAPIC\n");        
             ioapic = (struct mpioapic*)p;
             ioapicid = ioapic->apicno;
             p += sizeof(struct mpioapic);
             continue;
 
         case MPBUS:
-cprintf ("MPBUS\n");
+//cprintf ("MPBUS\n");
 
         case MPIOINTR:
-cprintf ("MPIOINTR\n");
+//cprintf ("MPIOINTR\n");
 
         case MPLINTR:
-cprintf ("MPLINTR\n");
+//cprintf ("MPLINTR\n");
 
             p += 8;
             continue;

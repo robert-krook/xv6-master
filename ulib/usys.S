@@ -63,3 +63,5 @@ SYSCALL(chpr);
 SYSCALL(change_console_colors);
 
 SYSCALL(get_processes_info);
+
+SYSCALL(halt);

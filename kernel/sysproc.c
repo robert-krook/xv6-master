@@ -246,3 +246,11 @@ sys_get_processes_info (void)
 
     return get_processes_info (process_info_table);
 }
+
+int
+sys_halt (void)
+{
+    cprintf ("Shutdown the system\n");
+    outb (0xf4, 0x00);
+    return 0;
+}

@@ -1,3 +1,9 @@
+
+# Makefile for this OS
+TOP_SRCDIR = .
+
+include $(TOP_SRCDIR)/Makefile.common
+
 -include local.mk
 
 X64 ?= yes
@@ -117,12 +123,12 @@ uobj/%.o: ulib/%.S
 
 # standard library sources
 LIBC_SRC := \
-	uobj/libc/string.o \
-	uobj/libc/ctype.o \
 	uobj/libc/stat.o \
-	uobj/libc/stdlib.o \
-	uobj/libc/stdio.o \
 	uobj/libc/math.o
+#	uobj/libc/ctype.o \
+#	uobj/libc/stdlib.o \
+#	uobj/libc/stdio.o
+#	uobj/libc/string.o \
 
 # Compile the libraries
 uobj/libc/%.o: $(LIBC_SRC)
@@ -136,6 +142,7 @@ shell_obj/%.o: shell_lib/%.c
 
 uobj/libc/libc.a: $(LIBC_SRC) #uobj/libc/string.o uobj/libc/ctype.o uobj/libc/stat.o uobj/libc/stdlib.o uobj/libc/stdio.o
 	$(CC) $(CFLAGS) -c -o $@ $<
+	$(MAKE) -C ulib/libc all
 	x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
 	x86_64-elf-ranlib uobj/libc/libc.a
 
@@ -176,15 +183,15 @@ MKVECTORS = tools/vectors$(BITS).pl
 kernel/vectors.S: $(MKVECTORS)
 	perl $(MKVECTORS) > kernel/vectors.S
 
-ULIB = uobj/usys.o uobj/printf.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o
+ULIB = uobj/usys.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o
 
-LIBC = uobj/libc/libc.a
+LIBC = ulib/libc/libc2.a uobj/libc/libc.a 
 
 #uobj/libc/string.o uobj/libc/stat.o #uobj/libc/ctype.o uobj/libc/stdlib.o uobj/libc/stdio.o 
 
 SHELL_LIB = shell_obj/parser.o shell_obj/history.o shell_obj/input.o
 
-fs/%: uobj/%.o $(ULIB) $(SHELL_LIB) $(LIBC)
+fs/%:  $(SHELL_LIB) uobj/%.o $(ULIB) $(LIBC)
 	@mkdir -p fs out
 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $@ $^
 	$(OBJDUMP) -S $@ > out/$*.asm
@@ -234,6 +241,7 @@ UPROGS=\
 	fs/kill\
 	fs/bash2\
 	etc/amiga.cfg\
+	fs/shutdown\
 
 fs/README: README
 	@mkdir -p fs
@@ -260,6 +268,7 @@ clean:
 	mkdir kobj/libc
 	mkdir uobj
 	mkdir uobj/libc
+	$(MAKE) -C ulib/libc clean
 
 # run in emulators
 
@@ -281,7 +290,7 @@ endif
 #QEMUOPTS = -net none -hda xv6.img -hdb fs.img -smp $(CPUS) -m 2048 $(QEMUEXTRA) -rtc base=localtime -device virtio-vga,max_outputs=1
 #QEMUOPTS = -net none -hda xv6.img -hdb fs.img -smp $(CPUS) -m 2048 $(QEMUEXTRA) -vga vmware -rtc base=localtime	
 	QEMUOPTS = -net none -hda xv6.img -hdb fs.img -smp cpus=$(CPUS) -m 8G $(QEMUEXTRA) -vga std -rtc base=localtime \
-	-accel tcg,thread=multi
+	-accel tcg,thread=multi -device isa-debug-exit,iobase=0xf4,iosize=0x04
 
 #-M pc -cpu qemu64,+sse4.1,+sse4.2 -accel hvf -accel tcg
 

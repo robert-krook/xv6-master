@@ -67,7 +67,7 @@ initGame ()
 // i = i + 0.25;
 // }
 
- printf (0,"Value = %f\n", 2.75);
+ printf (0,"Value = %f\n", 12.55);
 
     bird_position->xmin = programWindow.width / 2 - birdWidth / 1.75;
     bird_position->ymin = programWindow.height / 2 - birdHeight / 1.75;
@@ -135,6 +135,7 @@ void jumpHandler(Widget *w, message *msg)
 
 int main()
 {
+    ftell ();
 
     programWindow.width = 540;
     programWindow.height = 400;

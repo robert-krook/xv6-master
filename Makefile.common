@@ -1,0 +1,28 @@
+
+X64 ?= yes
+
+ifeq ("$(X64)","yes")
+	BITS = 64
+	XOBJS = kobj/vm64.o
+	XFLAGS = -m64 -DX64 -mcmodel=kernel -mtls-direct-seg-refs -mno-red-zone
+	LDFLAGS = -m elf_x86_64 -nostdlib -u _printf_float #-nodefaultlibs 
+	QEMU ?= qemu-system-x86_64
+#	QEMU ?= qemu-system-aarch64
+else
+	XFLAGS = -m32
+	LDFLAGS = -m elf_i386 -nostdlib # -nodefaultlibs
+	QEMU ?= qemu-system-i386
+endif
+
+# Header include directory
+INCLDIR=$(TOP_SRCDIR)/include
+
+CC = x86_64-elf-gcc #$(TOOLPREFIX)gcc
+AS = $(TOOLPREFIX)gas
+LD = x86_64-elf-ld #$(TOOLPREFIX)ld
+OBJCOPY = /opt/homebrew/opt/llvm/bin/llvm-objcopy #$(TOOLPREFIX)objcopy
+OBJDUMP = $(TOOLPREFIX)objdump
+CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -MD -ggdb -fno-omit-frame-pointer -I$(INCLDIR)
+CFLAGS += -ffreestanding -fno-common -nostdlib -Iinclude -gdwarf-2 $(XFLAGS) $(OPT) -msoft-float -mpreferred-stack-boundary=3
+CFLAGS += $(shell $(CC) -fno-stack-protector -E -x c /dev/null >/dev/null 2>&1 && echo -fno-stack-protector)
+ASFLAGS = -fno-pic -gdwarf-2 -Wa,-divide -Iinclude $(XFLAGS)

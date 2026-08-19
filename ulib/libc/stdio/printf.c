@@ -18,6 +18,8 @@
 
 #include "ctype.h"
 
+#include "libc/stdlib.h"
+
 static void
 putc (int fd, char c)
 {
@@ -45,13 +47,13 @@ printint (int fd, int xx, int base, int sgn)
 
     do {
         buf[i++] = digits[x % base];
-    } while((x /= base) != 0);
+    } while ((x /= base) != 0);
     
     if(neg)
         buf[i++] = '-';
 
     while(--i >= 0)
-        putc(fd, buf[i]);
+        putc (fd, buf[i]);
 }
 
 /*
@@ -70,6 +72,7 @@ printf (int fd, char *fmt, ...)
     va_list ap;
     char *s;
     int c, i, state;
+    int justified = 2;  // default right
 
     char prefix [10];       // Prefix for string or integer
     char precision [10];    // Precision (behind the comma)
@@ -94,10 +97,41 @@ printf (int fd, char *fmt, ...)
         } else if(state == '%') {
             
             if(c == 'd') {
-                printint (fd, va_arg(ap, int), 10, 1);
+                
+                char v [16];
+                itoa (va_arg(ap, int), v, 10, 0);
+
+                int fill_out = atoi (prefix) - strlen (v);
+
+if (justified==2) {
+
+                if (strlen (prefix)>0) {
+                    for (int k=0; k<fill_out; k++)
+                        putc (fd, ' ');
+                }
+}
+
+                int x = 0;
+                while (v[x] != 0) {
+                    putc(fd, v[x]);
+                    x++;
+                }
+
+if (justified==0) {
+
+                if (strlen (prefix)>0) {
+                    for (int k=0; k<fill_out; k++)
+                        putc (fd, ' ');
+                }
+}
+
+
+                //printint (fd, va_arg(ap, int), 10, 0);
+
+state = 0;
 
             } else if(c == 'x' || c == 'p') {
-                printint(fd, va_arg(ap, int), 16, 0);
+                printint(fd, va_arg(ap, int), 16, 1);
 
             } else if(c == 's') {
 
@@ -108,15 +142,26 @@ printf (int fd, char *fmt, ...)
 
                 int fill_out = atoi (prefix) - strlen (s);
 
+if (justified==2) {
+
                 if (strlen (prefix)>0) {
                     for (int k=0; k<fill_out; k++)
                         putc (fd, ' ');
                 }
+}
 
                 while (*s != 0) {
                     putc(fd, *s);
                     s++;
                 }
+
+if (justified==0) {
+
+                if (strlen (prefix)>0) {
+                    for (int k=0; k<fill_out; k++)
+                        putc (fd, ' ');
+                }
+}
 
                 state = 0;
 
@@ -125,16 +170,28 @@ printf (int fd, char *fmt, ...)
 
             } else if(c == 'f') {
                 
-                putc (fd, 'h');
-                putc (fd, 'i');
+          //      putc (fd, 'h');
+            //    putc (fd, 'i');
 
                 double g = va_arg (ap, double);
-                int k = (int) g;
-                printint(fd, k, 10, 1);
+char v [18];
+ftoa (g, v, 3);
+
+                //int k = (int) g;
+                //printint(fd, k, 10, 1);
+int x = 0;
+while (x < strlen (v)) {
+putc (fd, v[x]);
+x++;
+}
 
                 return;
 
-            } else if(c == '%') {
+             } else if(c == '-') {
+                justified = 0;  // left
+
+             } 
+            else if(c == '%') {
                 putc(fd, c);
 
             } else {
@@ -155,11 +212,11 @@ printf (int fd, char *fmt, ...)
                             return;
                         c = fmt[i] & 0xff;
                     }
-                    if (c=='.')
-                    {
+                    if (c=='.') {
                         // We have to go for the Precision 
                     }
                     i--;
+                    prefix [j] = 0;
                 }
             }
         }

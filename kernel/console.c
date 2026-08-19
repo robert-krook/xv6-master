@@ -233,7 +233,7 @@ cgaputc (int c)
     } else
         //crt[pos++] = (c&0xff) | 0xF000;  // white on black
         //crt[pos++] = (c&0xff) | 0x0700;  // black on white
-        crt[pos++] = (c&0xff) | 0x0A00;  // black on white
+        crt[pos++] = (c&0xff) | 0x0300;  // black on white
   
     if((pos/80) >= 24) {  // Scroll up.
         memmove(crt, crt+80, sizeof(crt[0])*23*80);
@@ -257,7 +257,7 @@ cgaputc (int c)
     outb(CRTPORT+1, 16);
 
     //crt[pos] = ' ' | 0x0B00;
-    crt[pos] = ' ' | 0x0A00;
+    crt[pos] = ' ' | 0x0300;
 }
 
 void
