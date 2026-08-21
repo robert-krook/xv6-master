@@ -5,7 +5,7 @@
 #include "user.h"
 
 int
-stat(char *n, struct stat *st)
+stat (char *n, struct stat *st)
 {
     int fd;
     int r;

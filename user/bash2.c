@@ -75,7 +75,6 @@ shell_loop (void)
     command_t *cmd;
     int status = 1;
 
-
     while (status && !exiting) {
 
         print_prompt ();

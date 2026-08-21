@@ -10,7 +10,8 @@ lib2.a:
 	$(MAKE) -C string all
 	$(MAKE) -C stdio all
 	$(MAKE) -C stdlib all
-	x86_64-elf-ar -r libc2.a stdio/*.o string/*.o stdlib/*.o
+	$(MAKE) -C math all
+	x86_64-elf-ar -r libc2.a stdio/*.o string/*.o stdlib/*.o math/*.o
 	x86_64-elf-ranlib libc2.a
 	echo "-----------------------------------------------------------------"
 
@@ -18,3 +19,4 @@ clean:
 	$(MAKE) -C stdio clean
 	$(MAKE) -C string clean
 	$(MAKE) -C stdlib clean
+	$(MAKE) -C math clean

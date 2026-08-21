@@ -124,7 +124,7 @@ uobj/%.o: ulib/%.S
 # standard library sources
 LIBC_SRC := \
 	uobj/libc/stat.o \
-	uobj/libc/math.o
+#	uobj/libc/math.o
 #	uobj/libc/ctype.o \
 #	uobj/libc/stdlib.o \
 #	uobj/libc/stdio.o
@@ -183,7 +183,7 @@ MKVECTORS = tools/vectors$(BITS).pl
 kernel/vectors.S: $(MKVECTORS)
 	perl $(MKVECTORS) > kernel/vectors.S
 
-ULIB = uobj/usys.o uobj/umalloc.o uobj/hashtable.o uobj/sprintf.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o
+ULIB = uobj/usys.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o
 
 LIBC = ulib/libc/libc2.a uobj/libc/libc.a 
 

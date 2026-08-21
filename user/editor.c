@@ -1,3 +1,7 @@
+/*
+ *  editor - editor in graphical mode
+ */
+
 #include "types.h"
 #include "user.h"
 #include "fcntl.h"
@@ -81,7 +85,6 @@ inputHandler (Widget *w, message *msg)
 int 
 main (int argc, char *argv[])
 {
-
     struct RGBA bgColor;
     struct RGBA textColor;
     struct RGBA border_color;
@@ -136,8 +139,7 @@ main (int argc, char *argv[])
 
     addButtonWidget (&programWindow, textColor, buttonColor, border_color, "save", 10, 10, 50, 30, 0, buttonHandler);
 
-    while (1)
-    {
+    while (1) {
         updateWindow(&programWindow);
     }
 }

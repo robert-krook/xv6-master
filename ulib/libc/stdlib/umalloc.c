@@ -1,6 +1,6 @@
 
 /*
- *  umalloc.c -- memory allocation at user mode.
+ *  umalloc.c -- memory allocation for user mode.
  */
 
 #include "types.h"
@@ -71,6 +71,7 @@ morecore (uint nu)
     hp->s.size = nu;
 
     free ((void*) (hp + 1));
+    
     return freep;
 }
 
