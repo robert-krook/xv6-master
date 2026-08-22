@@ -26,6 +26,13 @@ putc (int fd, char c)
     write(fd, &c, 1);
 }
 
+void
+putchar (int fd, char c)
+{
+    write(fd, &c, 1);
+}
+
+
 static void
 printint (int fd, int xx, int base, int sgn)
 {

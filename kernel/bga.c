@@ -1,6 +1,8 @@
 
 /*
- *  bga.c --
+ *  bga.c -- This is the BOCHS graphical device driver.
+ * 
+ *  For now this is working fine but we going to native driver like VGA etc.
  */
 
 #include "types.h"
@@ -20,14 +22,11 @@
 #define VBE_DISPI_IOPORT_INDEX              0x01CE
 #define VBE_DISPI_IOPORT_DATA               0x01CF
 
-//#define VBE_DISPI_INDEX_ID                  0
-
 #define VBE_DISPI_ID0                      0xB0C0
 #define VBE_DISPI_ID1                      0xB0C1
 #define VBE_DISPI_ID2                      0xB0C2
 #define VBE_DISPI_ID3                      0xB0C3
 #define VBE_DISPI_ID4                      0xB0C4
-
 
  #define VBE_DISPI_INDEX_ID                 0x0
  #define VBE_DISPI_INDEX_XRES               0x1
@@ -54,23 +53,26 @@ unsigned char * bga_lfb = (unsigned char *) P2V (0xa0000);
 #define BGA_SCREEN_WIDTH                    1024
 #define BGA_SCREEN_HEIGHT                   768
 
+#define BGA_INPUT_BUF 128
+
+// Structure for handling key strokes
+struct {
+	char buf[BGA_INPUT_BUF];
+	uint r;	//Read index
+	uint w;	//Write index
+	uint e;	//Edit index
+} bga_input;
+
+
 short bga_nr_banks = BGA_SCREEN_HEIGHT / 64;
 
 #define BGA_FB_VADDR 0xFFFFFFFFD0000000 
 
-unsigned char * bga_offscreen_buffer; //initialize offscreen buffer
+unsigned char * bga_offscreen_buffer;       //initialize offscreen buffer
 
-unsigned char * bga_offscreen_buffer_24; //initialize offscreen buffer
-
+unsigned char * bga_offscreen_buffer_24;    //initialize offscreen buffer
 
 struct spinlock bga_sl;
-
-// Define off screen buffer (refresh vi blitter)
-//char   bga_offscreen_buffer    [12][1024*768]; //initialize bga offscreen buffer
-//char   bga_offscreen_buffer    [12][1024*768]; //initialize bga offscreen buffer
-
-// unsigned char   bga_offscreen_buffer    [bga_nr_banks] 
-//                                         [BGA_SCREEN_WIDTH * BGA_SCREEN_HEIGHT]; //initialize bga offscreen buffer
 
 void
 bga_write_register (unsigned short IndexValue, unsigned short DataValue)
@@ -111,21 +113,6 @@ bga_set_bank (unsigned short BankNumber)
     bga_write_register(VBE_DISPI_INDEX_BANK, BankNumber);
 }
 
-// void
-// bga_color_demo ()
-// {
-//     int offset = (1 * BGA_SCREEN_WIDTH + 1);
-    
-//     for (int b=0; b<(bga_nr_banks + 1); b++) {
-//         for (int y=0; y<64; y++)
-//             for (int x=0; x<(BGA_SCREEN_WIDTH); x++) {
-//                 offset = (b * 64 * 1024) + (y * BGA_SCREEN_WIDTH + x);
-//                 *(bga_offscreen_buffer + offset) = b*5;
-//         }
-//     }
-
-// }
-
 void bga_init ()
 {
     cprintf ("bga_init\n");
@@ -144,15 +131,20 @@ void bga_init ()
 	initlock (&bga_sl, "spin");
 }
 
+/*
+ * bga_init_24  -- Initialize the 24 bit color pallete.
+ */
 void bga_init_24 ()
 {
     cprintf ("bga_init\n");
 
+    // mouse color cursor
     bga_mouse_color_24 [0].R = 255;
     bga_mouse_color_24 [0].G = 0;
     bga_mouse_color_24 [0].B = 0;
     bga_mouse_color_24 [0].A = 255;
 
+    // mouse color hand
     bga_mouse_color_24 [1].R = 255;
     bga_mouse_color_24 [1].G = 255;
     bga_mouse_color_24 [1].B = 255;
@@ -162,67 +154,33 @@ void bga_init_24 ()
 
     bga_nr_banks = 3 * (BGA_SCREEN_HEIGHT / 64);
 
-    // Switch to graphics mode.
+    // switch to graphics mode.
     bga_set_video_mode (1024, 768, 24, 0, 1);
     bga_clear_screen_24 ();
 
-// RGBA rgba;
-// rgba.R = 255;
-// rgba.G = 0;
-// rgba.B = 0;
-// rgba.A = 255;
-
-//     bga_draw_pixel_24 (1020, 760, rgba);
-
-
-//     bga_draw_line_24 (1, 1, 1023, 767, rgba);
-
-//     bga_draw_character_24 (500, 500, 'A', rgba);
-
-// bga_draw_rect_border_24 (rgba, 30, 39, 300, 100);
-
-// bga_draw_rect_by_coord_24 (10, 10, 200, 200, rgba);
-
-// bga_draw_icon_24 (300, 300, 4, rgba);
-
+    // refresh the screen
     bga_blit_24 ();
 
-	//Initialize the spinlock
+	// initialize the spinlock
 	initlock (&bga_sl, "spin");
 }
 
 int
 bga_blit ()
 {
-    //int offset = 0;
-
     for (int b=0; b<bga_nr_banks; b++) {
         bga_set_bank (b);
         memmove (bga_lfb, bga_offscreen_buffer+(b * 64 * 1024), 64 * 1024 );
-        //  for (int y=0; y<64; y++)
-        //      for (int x=0; x<(BGA_SCREEN_WIDTH); x++) {
-        //          offset = (b * 64 * 1024) + (y * BGA_SCREEN_WIDTH + x);
-        //              *(bga_lfb+(y * 1024 + x)) = *(bga_offscreen_buffer + offset); // b*5;
-        //  }
     }
     return 0;
 }
 
-
 int
 bga_blit_24 ()
 {
-    //int offset = 0;
-
     for (int b=0; b<bga_nr_banks; b++) {
-
         bga_set_bank (b);
         memmove (bga_lfb, bga_offscreen_buffer_24+(b * 64 * 1024), 64 * 1024);
-        //  for (int y=0; y<64; y++)
-        //      for (int x=0; x<(BGA_SCREEN_WIDTH); x++) {
-        //          offset = (b * 64 * 1024) + (y * BGA_SCREEN_WIDTH + x);
-        //              *(bga_lfb+(y * 1024 + x)) = *(bga_offscreen_buffer + offset); // b*5;
-        //  }
     }
     return 0;
 }
@@ -260,7 +218,10 @@ bga_draw_pixel_24 (int x, int y, RGBA color)
     return 0;
 }
 
-//Bresenham's algorithm Taken and adjusted from http://rosettacode.org/wiki/Bitmap/Bresenham's_line_algorithm#C
+/*
+ * bga_draw_line -- draw a line like "Bresenham's algorithm Taken and adjusted from 
+ *                  http://rosettacode.org/wiki/Bitmap/Bresenham's_line_algorithm#C"
+ */
 int 
 bga_draw_line (int x1, int y1, int x2, int y2, int color) 
 {
@@ -271,8 +232,7 @@ bga_draw_line (int x1, int y1, int x2, int y2, int color)
 	int dy = ydiff * ( (ydiff < 0) * (-1) + (ydiff > 0)), sy = y1 < y2 ? 1 : -1;
 	int err = (dx > dy ? dx : -dy)/2, e2;
 
-	for(;;)
-    {
+	for(;;) {
 		bga_draw_pixel(x1, y1, color);
 		if(x1 == x2 && y1 == y2) break;
 		e2 = err;
@@ -283,6 +243,9 @@ bga_draw_line (int x1, int y1, int x2, int y2, int color)
 	return 0;
 }
 
+/*
+ *  bga_draw_line_24 -- same description as bga_draw_line only for 24 bit mode.
+ */
 int 
 bga_draw_line_24 (int x1, int y1, int x2, int y2, RGBA color) 
 {
@@ -293,8 +256,7 @@ bga_draw_line_24 (int x1, int y1, int x2, int y2, RGBA color)
 	int dy = ydiff * ( (ydiff < 0) * (-1) + (ydiff > 0)), sy = y1 < y2 ? 1 : -1;
 	int err = (dx > dy ? dx : -dy)/2, e2;
 
-	for(;;)
-    {
+	for(;;) {
 		bga_draw_pixel_24(x1, y1, color);
 		if(x1 == x2 && y1 == y2) break;
 		e2 = err;
@@ -306,7 +268,7 @@ bga_draw_line_24 (int x1, int y1, int x2, int y2, RGBA color)
 }
 
 /*
- *  Draw a character at the screen.
+ *  bga_draw_character - draw a character at the screen.
  */
 int 
 bga_draw_character (int x, int y, char ch, int color)
@@ -317,8 +279,7 @@ bga_draw_character (int x, int y, char ch, int color)
         return -1;
     }
 //    acquireGUILock(buf);
-    for (i = 0; i < BGA_CHARACTER_HEIGHT; i++) 
-    {
+    for (i = 0; i < BGA_CHARACTER_HEIGHT; i++) {
         if (y + i > BGA_SCREEN_HEIGHT) {
             break;
         }
@@ -327,16 +288,14 @@ bga_draw_character (int x, int y, char ch, int color)
             continue;
         }
 
-        for (j = 0; j < BGA_CHARACTER_WIDTH; j++) 
-        {
-            if (bga_character[ord][i][j] == 1) 
-            {
-                if (x + j > BGA_SCREEN_WIDTH) 
-                {
+        for (j = 0; j < BGA_CHARACTER_WIDTH; j++) {
+
+            if (bga_character[ord][i][j] == 1) {
+
+                if (x + j > BGA_SCREEN_WIDTH) {
                     break;
                 }
-                if (x + j < 0) 
-                {
+                if (x + j < 0) {
                     continue;
                 }
                 //t = buf + (y + i) * SCREEN_WIDTH + x + j;
@@ -398,8 +357,7 @@ bga_draw_string (int x, int y, char *str, int color)
 {
     int offset_x = 0;
 
-    while (*str != '\0')
-    {
+    while (*str != '\0') {
         offset_x += bga_draw_character(x + offset_x, y, *str, color);
         str++;
     }
@@ -410,8 +368,7 @@ bga_draw_string_24 (int x, int y, char *str, RGBA color)
 {
     int offset_x = 0;
 
-    while (*str != '\0')
-    {
+    while (*str != '\0') {
         offset_x += bga_draw_character_24(x + offset_x, y, *str, color);
         str++;
     }
@@ -422,8 +379,7 @@ bga_draw_string_with_max_width (int x, int y, int width, char *str, int color)
 {
     int offset_x = 0;
 
-    while (*str != '\0' && offset_x + BGA_CHARACTER_WIDTH <= width)
-    {
+    while (*str != '\0' && offset_x + BGA_CHARACTER_WIDTH <= width) {
         offset_x += bga_draw_character(x + offset_x, y, *str, color);
         str++;
     }
@@ -434,8 +390,7 @@ bga_draw_string_with_max_width_24 (int x, int y, int width, char *str, RGBA colo
 {
     int offset_x = 0;
 
-    while (*str != '\0' && offset_x + BGA_CHARACTER_WIDTH <= width)
-    {
+    while (*str != '\0' && offset_x + BGA_CHARACTER_WIDTH <= width) {
         offset_x += bga_draw_character_24(x + offset_x, y, *str, color);
         str++;
     }
@@ -445,37 +400,33 @@ int
 bga_draw_icon (int x, int y, int icon, int color)
 {
     int i, j;
-//    int color2;
 
-//    color2 = color.R;
-
-    if (icon < 0 || icon > (BGA_ICON_NUMBER - 1))
-    {
+    if (icon < 0 || icon > (BGA_ICON_NUMBER - 1)) {
         return -1;
     }
 
-    for (i = 0; i < BGA_ICON_SIZE; i++)
-    {
-        if (y + i > BGA_SCREEN_HEIGHT)
-        {
+    for (i = 0; i < BGA_ICON_SIZE; i++) {
+
+        if (y + i > BGA_SCREEN_HEIGHT){
             break;
         }
-        if (y + i < 0)
-        {
+
+        if (y + i < 0) {
             continue;
         }
-        for (j = 0; j < BGA_ICON_SIZE; j++)
-        {
-            if (bga_icons [icon] [i] [j] == 1)
-            {
-                if (x + j > BGA_SCREEN_WIDTH)
-                {
+
+        for (j = 0; j < BGA_ICON_SIZE; j++) {
+
+            if (bga_icons [icon] [i] [j] == 1) {
+
+                if (x + j > BGA_SCREEN_WIDTH) {
                     break;
                 }
-                if (x + j < 0)
-                {
+                
+                if (x + j < 0) {
                     continue;
                 }
+
                 //t = buf + (y + i) * SCREEN_WIDTH + x + j;
                 //drawPointAlpha(t, color);
                 bga_draw_pixel(x + j, y + i, color);
@@ -489,37 +440,33 @@ int
 bga_draw_icon_24 (int x, int y, int icon, RGBA color)
 {
     int i, j;
-//    int color2;
 
-//    color2 = color.R;
-
-    if (icon < 0 || icon > (BGA_ICON_NUMBER - 1))
-    {
+    if (icon < 0 || icon > (BGA_ICON_NUMBER - 1)) {
         return -1;
     }
 
-    for (i = 0; i < BGA_ICON_SIZE; i++)
-    {
-        if (y + i > BGA_SCREEN_HEIGHT)
-        {
+    for (i = 0; i < BGA_ICON_SIZE; i++) {
+
+        if (y + i > BGA_SCREEN_HEIGHT) {
             break;
         }
-        if (y + i < 0)
-        {
+
+        if (y + i < 0) {
             continue;
         }
-        for (j = 0; j < BGA_ICON_SIZE; j++)
+
+        for (j = 0; j < BGA_ICON_SIZE; j++) 
         {
-            if (bga_icons [icon] [i] [j] == 1)
-            {
-                if (x + j > BGA_SCREEN_WIDTH)
-                {
+            if (bga_icons [icon] [i] [j] == 1) {
+
+                if (x + j > BGA_SCREEN_WIDTH) {
                     break;
                 }
-                if (x + j < 0)
-                {
+
+                if (x + j < 0) {
                     continue;
                 }
+
                 //t = buf + (y + i) * SCREEN_WIDTH + x + j;
                 //drawPointAlpha(t, color);
                 bga_draw_pixel_24(x + j, y + i, color);
@@ -534,29 +481,28 @@ bga_draw_mouse(int mode, int x, int y)
 {
     int i, j;
 
-    for (i = 0; i < BGA_MOUSE_HEIGHT; i++)
-    {
-        if (y + i >= BGA_SCREEN_HEIGHT)
-        {
+    for (i = 0; i < BGA_MOUSE_HEIGHT; i++) {
+
+        if (y + i >= BGA_SCREEN_HEIGHT) {
             break;
         }
-        if (y + i < 0)
-        {
+
+        if (y + i < 0) {
             continue;
         }
-        for (j = 0; j < BGA_MOUSE_WIDTH; j++)
-        {
-            if (x + j >= BGA_SCREEN_WIDTH)
-            {
+
+        for (j = 0; j < BGA_MOUSE_WIDTH; j++) {
+
+            if (x + j >= BGA_SCREEN_WIDTH) {
                 break;
             }
-            if (x + j < 0)
-            {
+
+            if (x + j < 0) {
                 continue;
             }
+
             int temp = bga_mouse_pointer [mode] [i] [j];
-            if (temp)
-            {
+            if (temp) {
                 //t = buf + (y + i) * SCREEN_WIDTH + x + j;
                 //drawPoint(t, mouse_color[temp - 1]);
                 bga_draw_pixel(x + j, (y + i), bga_mouse_color [temp - 1]);
@@ -570,29 +516,28 @@ bga_draw_mouse_24(int mode, int x, int y)
 {
     int i, j;
 
-    for (i = 0; i < BGA_MOUSE_HEIGHT; i++)
-    {
-        if (y + i >= BGA_SCREEN_HEIGHT)
-        {
+    for (i = 0; i < BGA_MOUSE_HEIGHT; i++) {
+        
+        if (y + i >= BGA_SCREEN_HEIGHT) {
             break;
         }
-        if (y + i < 0)
-        {
+
+        if (y + i < 0) {
             continue;
         }
-        for (j = 0; j < BGA_MOUSE_WIDTH; j++)
-        {
-            if (x + j >= BGA_SCREEN_WIDTH)
-            {
+
+        for (j = 0; j < BGA_MOUSE_WIDTH; j++) {
+
+            if (x + j >= BGA_SCREEN_WIDTH) {
                 break;
             }
-            if (x + j < 0)
-            {
+
+            if (x + j < 0) {
                 continue;
             }
+
             int temp = bga_mouse_pointer [mode] [i] [j];
-            if (temp)
-            {
+            if (temp) {
                 //t = buf + (y + i) * SCREEN_WIDTH + x + j;
                 //drawPoint(t, mouse_color[temp - 1]);
                 bga_draw_pixel_24(x + j, (y + i), bga_mouse_color_24 [temp - 1]);
@@ -601,21 +546,19 @@ bga_draw_mouse_24(int mode, int x, int y)
     }
 }
 
-
 void 
 bga_draw_rect_bound (int x, int y, int width, int height, int fill, int max_x, int max_y)
 {
     int i, j;
 
-    for (i = 0; i < height - 1; i++)
-    {
+    for (i = 0; i < height - 1; i++) {
+
      //   memset (bga_offscreen_buffer+((y + i) * 1024 + x), fill, width);
         if (y + i < 0)
             continue;
         if (y + i >= max_y)
             break;
-        for (j = 0; j < width - 1; j++)
-        {
+        for (j = 0; j < width - 1; j++) {
             if (x + j < 0)
                 continue;
             if (x + j >= max_x)
@@ -633,14 +576,12 @@ bga_draw_rect_bound_24 (int x, int y, int width, int height, RGBA fill, int max_
     int i, j;
    // int color2 = fill.R; // get_nearest_color (fill.R, fill.G, fill.B);
 
-    for (i = 0; i < height - 1; i++)
-    {
+    for (i = 0; i < height - 1; i++) {
         if (y + i < 0)
             continue;
         if (y + i >= max_y)
             break;
-        for (j = 0; j < width - 1; j++)
-        {
+        for (j = 0; j < width - 1; j++) {
             if (x + j < 0)
                 continue;
             if (x + j >= max_x)
@@ -676,29 +617,6 @@ bga_draw_rect_by_coord_24(int xmin, int ymin, int xmax, int ymax, RGBA fill)
     bga_draw_rect_24 (xmin, ymin, xmax - xmin, ymax - ymin, fill);
 }
 
-// void 
-// clearRect (RGB *buf, RGB *temp_buf, int x, int y, int width, int height)
-// {
-//     RGB *t;
-//     RGB *o;
-//     int i;
-//     int max_line = (SCREEN_WIDTH - x) < width ? (SCREEN_WIDTH - x) : width;
-//     for (i = 0; i < height; i++)
-//     {
-//         if (y + i >= SCREEN_HEIGHT)
-//         {
-//             break;
-//         }
-//         if (y + i < 0)
-//         {
-//             continue;
-//         }
-//         // t = buf + (y + i) * SCREEN_WIDTH + x;
-//         // o = temp_buf + (y + i) * SCREEN_WIDTH + x;
-//         // memmove(t, o, max_line * 3);
-//     }
-// }
-
 void 
 draw24Image_24 (RGB *buf, RGB *img, int x, int y, int width, int height, int max_x, int max_y)
 {
@@ -721,7 +639,6 @@ draw24Image_24 (RGB *buf, RGB *img, int x, int y, int width, int height, int max
         memmove (t, o, max_line * 3);
     }
 }
-
 
 /*
  *  Draw inside of a window.
@@ -938,20 +855,15 @@ bga_draw_rect_border_24 (RGBA color, int x, int y, int width, int height)
     }
 }
 
-#define BGA_INPUT_BUF 128
-struct {
-	char buf[BGA_INPUT_BUF];
-	uint r;	//Read index
-	uint w;	//Write index
-	uint e;	//Edit index
-} bga_input;
 
 int 
 bga_getkey (void) 
 {
 	int c;
+
 	if(bga_input.r == bga_input.e)
 		return -1;
+
     c = bga_input.buf [bga_input.r++ % BGA_INPUT_BUF];
     
     return c;

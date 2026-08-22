@@ -1,6 +1,9 @@
-// The I/O APIC manages hardware interrupts for an SMP system.
-// http://www.intel.com/design/chipsets/datashts/29056601.pdf
-// See also picirq.c.
+
+/*
+ *  ioapic.c -- The I/O APIC manages hardware interrupts for an SMP system.
+ *              http://www.intel.com/design/chipsets/datashts/29056601.pdf
+ *              See also picirq.c.
+ */
 
 #include "types.h"
 #include "defs.h"
@@ -26,23 +29,20 @@
 volatile struct ioapic *ioapic;
 
 // IO APIC MMIO structure: write reg, then read or write data.
-struct ioapic 
-{
+struct ioapic {
   uint reg;
   uint pad[3];
   uint data;
 };
 
 static uint
-ioapicread (int reg)
-{
+ioapicread (int reg) {
     ioapic->reg = reg;
     return ioapic->data;
 }
 
 static void
-ioapicwrite (int reg, uint data)
-{
+ioapicwrite (int reg, uint data) {
     ioapic->reg = reg;
     ioapic->data = data;
 }
@@ -66,8 +66,7 @@ ioapicinit (void)
 
     // Mark all interrupts edge-triggered, active high, disabled,
     // and not routed to any CPUs.
-    for(i = 0; i <= maxintr; i++)
-    {
+    for(i = 0; i <= maxintr; i++) {
         ioapicwrite(REG_TABLE+2*i, INT_DISABLED | (T_IRQ0 + i));
         ioapicwrite(REG_TABLE+2*i+1, 0);
     }

@@ -1,12 +1,12 @@
 /*
-    cmos.c -- cmos clock functions.
-*/
+ *  cmos.c --   cmos clock functions.
+ *              We are going to use this in the library time.
+ */
 
 #include "types.h"
 #include "defs.h"
 #include "x86.h"
 #include "traps.h"
-
 #include "date.h"
 
 #define		CURRENT_YEAR		2000	// not crucially accurate, YY value
@@ -35,13 +35,11 @@
 
 uint64	unixtime = 0;
 
-enum dow 
-{
+enum dow {
 	MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
 };
 
-enum months 
-{ 
+enum months { 
 	JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY,
 	AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER
 };

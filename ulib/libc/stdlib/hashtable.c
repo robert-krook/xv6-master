@@ -249,8 +249,6 @@ bool ht_expand(ht* table) {
 const char * 
 ht_set (ht *table, const char *key, char *value) {
 
-//printf (2, "%s\n", value);
-
     //assert(value != NULL);
     if (value == NULL) {
         return NULL;

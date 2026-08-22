@@ -113,6 +113,10 @@ uobj/%.o: user/%.c
 	@mkdir -p uobj
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+uobj/shells/%.o: user/shells/%.c
+	@mkdir -p uobj/shells
+	$(CC) $(CFLAGS) -c -o $@ $<
+
 uobj/%.o: ulib/%.c
 	@mkdir -p uobj
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -122,8 +126,8 @@ uobj/%.o: ulib/%.S
 	$(CC) $(ASFLAGS) -c -o $@ $<
 
 # standard library sources
-LIBC_SRC := \
-	uobj/libc/stat.o \
+# LIBC_SRC := \
+# 	uobj/libc/stat.o \
 #	uobj/libc/math.o
 #	uobj/libc/ctype.o \
 #	uobj/libc/stdlib.o \
@@ -131,8 +135,8 @@ LIBC_SRC := \
 #	uobj/libc/string.o \
 
 # Compile the libraries
-uobj/libc/%.o: $(LIBC_SRC)
-	$(CC) $(CFLAGS) -c -o $@ $<
+# uobj/libc/%.o: $(LIBC_SRC)
+# 	$(CC) $(CFLAGS) -c -o $@ $<
 
 # Compile the shell library
 shell_obj/%.o: shell_lib/%.c
@@ -140,11 +144,11 @@ shell_obj/%.o: shell_lib/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 
-uobj/libc/libc.a: $(LIBC_SRC) #uobj/libc/string.o uobj/libc/ctype.o uobj/libc/stat.o uobj/libc/stdlib.o uobj/libc/stdio.o
-	$(CC) $(CFLAGS) -c -o $@ $<
-	$(MAKE) -C ulib/libc all
-	x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
-	x86_64-elf-ranlib uobj/libc/libc.a
+# uobj/libc/libc.a: $(LIBC_SRC) #uobj/libc/string.o uobj/libc/ctype.o uobj/libc/stat.o uobj/libc/stdlib.o uobj/libc/stdio.o
+# 	$(CC) $(CFLAGS) -c -o $@ $<
+# 	$(MAKE) -C ulib/libc all
+# 	x86_64-elf-ar -r uobj/libc/libc.a uobj/libc/*.o
+# 	x86_64-elf-ranlib uobj/libc/libc.a
 
 # bootblock
 out/bootblock: kernel/bootasm.S kernel/bootmain.c
@@ -185,13 +189,29 @@ kernel/vectors.S: $(MKVECTORS)
 
 ULIB = uobj/usys.o uobj/user_window.o uobj/user_handler.o uobj/bitmap.o
 
-LIBC = ulib/libc/libc2.a uobj/libc/libc.a 
+LIBC = ulib/libc/libc.a 
 
 #uobj/libc/string.o uobj/libc/stat.o #uobj/libc/ctype.o uobj/libc/stdlib.o uobj/libc/stdio.o 
+#fs/%:  $(SHELL_LIB) uobj/%.o $(ULIB) $(LIBC)
 
-SHELL_LIB = shell_obj/parser.o shell_obj/history.o shell_obj/input.o
+SHELL_LIB = shell_obj/parser.o \
+			shell_obj/history.o \
+		 	shell_obj/input.o \
+			shell_obj/executor.o \
+			shell_obj/command_registry.o \
+			shell_obj/builtin_commands.o \
+			shell_obj/builtin_commands_impl.o
 
-fs/%:  $(SHELL_LIB) uobj/%.o $(ULIB) $(LIBC)
+
+fs/%:  uobj/%.o $(ULIB) $(LIBC)
+	echo "First"
+	@mkdir -p fs out
+	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $@ $^
+	$(OBJDUMP) -S $@ > out/$*.asm
+	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > out/$*.sym
+
+fs/shells/bash2: uobj/shells/bash2.o $(SHELL_LIB) $(ULIB) $(LIBC)
+	echo "Second"
 	@mkdir -p fs out
 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $@ $^
 	$(OBJDUMP) -S $@ > out/$*.asm
@@ -239,16 +259,18 @@ UPROGS=\
 	fs/cp\
 	fs/mv\
 	fs/kill\
-	fs/bash2\
 	etc/amiga.cfg\
 	fs/shutdown\
+
+SHELL_BASH=\
+	fs/shells/bash2
 
 fs/README: README
 	@mkdir -p fs
 	cp README fs/README
 
-fs.img: out/mkfs $(UPROGS)
-	out/mkfs fs.img $(UPROGS)
+fs.img: out/mkfs $(UPROGS) $(SHELL_BASH)
+	out/mkfs fs.img $(UPROGS) $(SHELL_BASH)
 
 hd.img: out/mkfs
 	out/mkfs hd.img
@@ -268,6 +290,9 @@ clean:
 	mkdir kobj/libc
 	mkdir uobj
 	mkdir uobj/libc
+	mkdir uobj/shells
+	mkdir fs
+	mkdir fs/shells
 	$(MAKE) -C ulib/libc clean
 
 # run in emulators

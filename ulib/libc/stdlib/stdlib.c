@@ -2,13 +2,10 @@
 #include "types.h"
 #include "libc/string.h"
 #include "math.h"
+
+#include "hashtable.h"
 #include "libc/stdlib.h"
 
-int 
-setenv (const char *name, const char *value, int overwrite)
-{
-    return 0;
-}
 
 int
 atoi(const char *s)

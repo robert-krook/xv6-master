@@ -1,6 +1,8 @@
 
 /*
- *  ide.c -- Simple PIO-based (non-DMA) IDE driver code.
+ *  ide.c   Simple PIO-based (non-DMA) IDE driver code.
+*
+ *          This is our IDE driver.
  */ 
 
 #include "types.h"
@@ -39,7 +41,9 @@ static int havedisk1;
 
 static void idestart (struct buf*);
 
-// Wait for IDE disk to become ready.
+/*
+ *  idewait -- wait for IDE disk to become ready.
+ */
 static int
 idewait (int checkerr)
 {
@@ -62,8 +66,11 @@ ideinit (void)
     kprintf ("ideinit()\n");
 
     initlock (&idelock, "ide");
+
     picenable (IRQ_IDE);
+
     ioapicenable (IRQ_IDE, ncpu - 1);
+
     idewait (0);
   
     // Check if disk 1 is present
@@ -124,7 +131,9 @@ idestart (struct buf *b)
 
 }
 
-// Interrupt handler.
+/*
+ *  ideintr -- this methode is called when data is arrived from the controller (interrupt handler).
+ */
 void
 ideintr (void)
 {
@@ -163,6 +172,10 @@ ideintr (void)
 // Sync buf with disk. 
 // If B_DIRTY is set, write buf to disk, clear B_DIRTY, set B_VALID.
 // Else if B_VALID is not set, read buf from disk, set B_VALID.
+
+/*
+ *  iderw -- ask IDE driver for data.
+ */
 void
 iderw (struct buf *b)
 {

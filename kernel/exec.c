@@ -1,7 +1,6 @@
 /*
-    exec.c -- run a program from disk.
+ *  exec.c -- run a program from disk and create a user process.
 */
-
 
 #include "types.h"
 #include "param.h"
@@ -26,8 +25,7 @@ exec (char *path, char **argv)
     struct proghdr ph;
     pde_t *pgdir, *oldpgdir;
 
-    if ((ip = namei (path)) == 0) 
-    { 
+    if ((ip = namei (path)) == 0) { 
         cprintf ("exec %s failed\n", path);
         return -1;
     }
@@ -37,8 +35,7 @@ exec (char *path, char **argv)
     pgdir = 0;
 
     // Check ELF header
-    if (readi (ip, (char *) &elf, 0, sizeof(elf)) < sizeof(elf)) 
-    {
+    if (readi (ip, (char *) &elf, 0, sizeof(elf)) < sizeof(elf)) {
         cprintf ("Wrong ELF header\n");
         goto bad;
     }
@@ -76,14 +73,15 @@ exec (char *path, char **argv)
 
     ip = 0;
 
-
     // Allocate two pages at the next page boundary.
     // Make the first inaccessible.  Use the second as the user stack.
     sz = PGROUNDUP (sz);
+
     if ((sz = allocuvm (pgdir, sz, sz + 2*PGSIZE)) == 0)
         goto bad;
 
     clearpteu(pgdir, (char*)(sz - 2*PGSIZE));
+
     sp = sz;
 
     // Push argument strings, prepare rest of stack in ustack.
@@ -100,7 +98,6 @@ exec (char *path, char **argv)
         ustack[3+argc] = sp;
     }
 
-
     ustack[3+argc] = 0;
 
     ustack[0] = 0xffffffff;  // fake return PC
@@ -110,9 +107,6 @@ exec (char *path, char **argv)
 #if X64
     proc->tf->rdi = argc;
     proc->tf->rsi = sp - (argc+1)*sizeof(uintp);
-
-//cprintf ("Prio = %d\n", proc->priority);
-
 #endif
 
     sp -= (3+argc+1) * sizeof(uintp);

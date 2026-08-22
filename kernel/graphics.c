@@ -1,5 +1,5 @@
 /*
- *  graphics.c -- VGA driver for our kernel.
+ *  graphics.c -- standard VGA driver for our kernel.
  *
  *  To Do
  *  -----

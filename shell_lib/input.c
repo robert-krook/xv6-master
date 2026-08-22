@@ -1,10 +1,14 @@
-
+/*
+ *  input.c -- handles the input from the keyboard.
+ */
 
 #include "types.h"
 #include "user.h"
 
+#include "bash/shell.h"
+
 int current_cursor_pos = 0;
-char current_command[256];
+
 char current_input_buffer[256];
 int current_input_length = 0;
 
@@ -18,12 +22,16 @@ update_buffer_state (char *buffer, int pos, int cursor)
     current_cursor_pos = cursor;
 }
 
+/*
+ *  read_input -- read input from the keyboard.
+ */
 char *
-read_input () {
-
+read_input () 
+{
     char buf[100];
 
     char * buffer = malloc (256);
+ 
     if (!buffer) {
         //perror("malloc failed");
         //exit(EXIT_FAILURE);
@@ -49,8 +57,15 @@ read_input () {
         }
 
         if (c == '\n') {
+            //putchar (0, '\n');
+            //putchar ('\n');
+            update_buffer_state (buffer, pos, cursor);
             break;
         } else if (c == '\t') {
+            
+            // hit enter and execute a command
+
+
 
         } else {
             buffer [pos++] = c;

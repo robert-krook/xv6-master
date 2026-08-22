@@ -1,5 +1,8 @@
 
-# bootasm.S - boot sector
+#   bootasm.S - boot sector
+#
+#   This assembly code is the boot sector. It alway start at 7c00 by the BIOS in real mode.
+#
 
 #include "asm.h"
 #include "memlayout.h"
@@ -15,7 +18,7 @@
 start:
     cli                         # BIOS enabled interrupts; disable
   
-    # VESA MODE
+    # VESA MODE - not goiing to use this at the moment
 #    movw    $0x4f02, %ax
 #    movw    $0x4114, %bx
 #    int     $0x10
@@ -78,7 +81,7 @@ start32:
 
     # Set up the stack pointer and call into C.
     movl    $start, %esp
-    call    bootmain
+    call    bootmain                # start the main program in bootmain.c
 
     # If bootmain returns (it shouldn't), trigger a Bochs
     # breakpoint if running under Bochs, then loop.

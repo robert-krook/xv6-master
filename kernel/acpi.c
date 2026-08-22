@@ -1,5 +1,10 @@
 /*
- *  acpi.c - ...
+ *  acpi.c - ACPI (Advanced Configuration and Power Interface)
+ *  
+ *  Is an open industry standard that lets your computer's operating system
+ *  directly manage power savings and hardware configuration, replacing
+ *  older BIOS-controlled methods. It controls sleep modes,
+ *  processor speed, and device power levels.
  */
 
 #include "types.h"
@@ -46,66 +51,76 @@ find_rdsp (void)
     return scan_rdsp(0xE0000, 0x20000);
 }
 
-static int acpi_config_smp(struct acpi_madt *madt) {
-  uint32 lapic_addr;
-  uint nioapic = 0;
-  uchar *p, *e;
+static int acpi_config_smp(struct acpi_madt *madt) 
+{
+    uint32 lapic_addr;
+    uint nioapic = 0;
+    uchar *p, *e;
 
-  if (!madt)
+    if (!madt)
+        return -1;
+
+    if (madt->header.length < sizeof(struct acpi_madt))
+        return -1;
+
+    lapic_addr = madt->lapic_addr_phys;
+
+    p = madt->table;
+    e = p + madt->header.length - sizeof(struct acpi_madt);
+
+    while (p < e) {
+
+        uint len;
+
+        if ((e - p) < 2)
+            break;
+
+        len = p[1];
+
+        if ((e - p) < len)
+            break;
+
+        switch (p[0]) {
+
+            case TYPE_LAPIC: {
+                struct madt_lapic *lapic = (void*) p;
+                if (len < sizeof(*lapic))
+                    break;
+                if (!(lapic->flags & APIC_LAPIC_ENABLED))
+                    break;
+                cprintf("acpi: cpu#%d apicid %d\n", ncpu, lapic->apic_id);
+                cpus[ncpu].id = ncpu;
+                cpus[ncpu].apicid = lapic->apic_id;
+                ncpu++;
+                break;
+            }
+
+            case TYPE_IOAPIC: {
+                struct madt_ioapic *ioapic = (void*) p;
+                if (len < sizeof(*ioapic))
+                    break;
+                cprintf("acpi: ioapic#%d @%x id=%d base=%d\n",
+                nioapic,  ioapic->addr, ioapic->id, ioapic->interrupt_base);
+
+                if (nioapic) {
+                    cprintf("warning: multiple ioapics are not supported");
+                } else {
+                    ioapicid = ioapic->id;
+                }
+                nioapic++;
+                break;
+            }
+        }
+        p += len;
+    }
+
+     if (ncpu) {
+        ismp = 1;
+        lapic = IO2V(((uintp)lapic_addr));
+        return 0;
+    }
+
     return -1;
-  if (madt->header.length < sizeof(struct acpi_madt))
-    return -1;
-
-  lapic_addr = madt->lapic_addr_phys;
-
-  p = madt->table;
-  e = p + madt->header.length - sizeof(struct acpi_madt);
-
-  while (p < e) {
-    uint len;
-    if ((e - p) < 2)
-      break;
-    len = p[1];
-    if ((e - p) < len)
-      break;
-    switch (p[0]) {
-    case TYPE_LAPIC: {
-      struct madt_lapic *lapic = (void*) p;
-      if (len < sizeof(*lapic))
-        break;
-      if (!(lapic->flags & APIC_LAPIC_ENABLED))
-        break;
-      cprintf("acpi: cpu#%d apicid %d\n", ncpu, lapic->apic_id);
-      cpus[ncpu].id = ncpu;
-      cpus[ncpu].apicid = lapic->apic_id;
-      ncpu++;
-      break;
-    }
-    case TYPE_IOAPIC: {
-      struct madt_ioapic *ioapic = (void*) p;
-      if (len < sizeof(*ioapic))
-        break;
-      cprintf("acpi: ioapic#%d @%x id=%d base=%d\n",
-        nioapic, ioapic->addr, ioapic->id, ioapic->interrupt_base);
-      if (nioapic) {
-        cprintf("warning: multiple ioapics are not supported");
-      } else {
-        ioapicid = ioapic->id;
-      }
-      nioapic++;
-      break;
-    }
-    }
-    p += len;
-  }
-
-  if (ncpu) {
-    ismp = 1;
-    lapic = IO2V(((uintp)lapic_addr));
-    return 0;
-  }
-
-  return -1;
 }
 
 #if X64
@@ -114,21 +129,25 @@ static int acpi_config_smp(struct acpi_madt *madt) {
 #define PHYSLIMIT 0x0E000000
 #endif
 
-int acpiinit(void) {
-  unsigned n, count;
-  struct acpi_rdsp *rdsp;
-  struct acpi_rsdt *rsdt;
-  struct acpi_madt *madt = 0;
+int acpiinit(void) 
+{
+    unsigned n, count;
+    struct acpi_rdsp *rdsp;
+    struct acpi_rsdt *rsdt;
+    struct acpi_madt *madt = 0;
 
-  rdsp = find_rdsp();
-  if (rdsp->rsdt_addr_phys > PHYSLIMIT)
-    goto notmapped;
-  rsdt = p2v(rdsp->rsdt_addr_phys);
-  count = (rsdt->header.length - sizeof(*rsdt)) / 4;
-  for (n = 0; n < count; n++) {
-    struct acpi_desc_header *hdr = p2v(rsdt->entry[n]);
-    if (rsdt->entry[n] > PHYSLIMIT)
-      goto notmapped;
+    rdsp = find_rdsp();
+
+    if (rdsp->rsdt_addr_phys > PHYSLIMIT)
+        goto notmapped;
+
+    rsdt = p2v(rdsp->rsdt_addr_phys);
+    count = (rsdt->header.length - sizeof(*rsdt)) / 4;
+
+    for (n = 0; n < count; n++) {
+        struct acpi_desc_header *hdr = p2v(rsdt->entry[n]);
+        if (rsdt->entry[n] > PHYSLIMIT)
+            goto notmapped;
 #if DEBUG
     uchar sig[5], id[7], tableid[9], creator[5];
     memmove(sig, hdr->signature, 4); sig[4] = 0;
@@ -139,13 +158,13 @@ int acpiinit(void) {
       sig, id, tableid, hdr->oem_revision,
       creator, hdr->creator_revision);
 #endif
-    if (!memcmp(hdr->signature, SIG_MADT, 4))
-      madt = (void*) hdr;
-  }
+        if (!memcmp(hdr->signature, SIG_MADT, 4))
+            madt = (void*) hdr;
+    }
 
-  return acpi_config_smp(madt);
+    return acpi_config_smp(madt);
 
 notmapped:
-  cprintf("acpi: tables above 0x%x not mapped.\n", PHYSLIMIT);
-  return -1;
+    cprintf("acpi: tables above 0x%x not mapped.\n", PHYSLIMIT);
+    return -1;
 }

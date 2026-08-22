@@ -1,6 +1,6 @@
 
 /*
- *  log.c -- logging blocks for disaster recovery
+ *  log.c --    logging blocks for disaster recovery
  */
 
 #include "types.h"
@@ -78,31 +78,30 @@ initlog (void)
 static void 
 install_trans (void)
 {
-  int tail;
+    int tail;
 
-  for (tail = 0; tail < log.lh.n; tail++) 
-  {
-    struct buf *lbuf = bread(log.dev, log.start+tail+1); // read log block
-    struct buf *dbuf = bread(log.dev, log.lh.sector[tail]); // read dst
-    memmove(dbuf->data, lbuf->data, BSIZE);  // copy block to dst
-    bwrite(dbuf);  // write dst to disk
-    brelse(lbuf); 
-    brelse(dbuf);
-  }
+    for (tail = 0; tail < log.lh.n; tail++) {
+        struct buf *lbuf = bread(log.dev, log.start+tail+1); // read log block
+        struct buf *dbuf = bread(log.dev, log.lh.sector[tail]); // read dst
+        memmove(dbuf->data, lbuf->data, BSIZE);  // copy block to dst
+        bwrite(dbuf);  // write dst to disk
+        brelse(lbuf); 
+        brelse(dbuf);
+     }
 }
 
 // Read the log header from disk into the in-memory log header
 static void
 read_head(void)
 {
-  struct buf *buf = bread(log.dev, log.start);
-  struct logheader *lh = (struct logheader *) (buf->data);
-  int i;
-  log.lh.n = lh->n;
-  for (i = 0; i < log.lh.n; i++) {
-    log.lh.sector[i] = lh->sector[i];
-  }
-  brelse(buf);
+    struct buf *buf = bread(log.dev, log.start);
+    struct logheader *lh = (struct logheader *) (buf->data);
+    int i;
+    log.lh.n = lh->n;
+    for (i = 0; i < log.lh.n; i++) {
+        log.lh.sector[i] = lh->sector[i];
+    }
+    brelse(buf);
 }
 
 // Write in-memory log header to disk.
@@ -111,24 +110,24 @@ read_head(void)
 static void
 write_head(void)
 {
-  struct buf *buf = bread(log.dev, log.start);
-  struct logheader *hb = (struct logheader *) (buf->data);
-  int i;
-  hb->n = log.lh.n;
-  for (i = 0; i < log.lh.n; i++) {
-    hb->sector[i] = log.lh.sector[i];
-  }
-  bwrite(buf);
-  brelse(buf);
+    struct buf *buf = bread(log.dev, log.start);
+    struct logheader *hb = (struct logheader *) (buf->data);
+    int i;
+    hb->n = log.lh.n;
+    for (i = 0; i < log.lh.n; i++) {
+        hb->sector[i] = log.lh.sector[i];
+    }
+    bwrite(buf);
+    brelse(buf);
 }
 
 static void
 recover_from_log(void)
 {
-  read_head();      
-  install_trans(); // if committed, copy from log to disk
-  log.lh.n = 0;
-  write_head(); // clear the log
+    read_head ();      
+    install_trans (); // if committed, copy from log to disk
+    log.lh.n = 0;
+    write_head (); // clear the log
 }
 
 void
@@ -136,8 +135,7 @@ begin_trans (void)
 {
     acquire(&log.lock);
 
-    while (log.busy) 
-    {
+    while (log.busy) {
         sleep(&log, &log.lock);
     }
 
@@ -149,8 +147,7 @@ begin_trans (void)
 void
 commit_trans (void)
 {
-    if (log.lh.n > 0) 
-    {
+    if (log.lh.n > 0) {
         write_head ();    // Write header to disk -- the real commit
         install_trans (); // Now install writes to home locations
         log.lh.n = 0; 
@@ -175,27 +172,25 @@ commit_trans (void)
 void
 log_write(struct buf *b)
 {
-  int i;
+    int i;
 
-  if (log.lh.n >= LOGSIZE || log.lh.n >= log.size - 1)
-    panic("too big a transaction");
-  if (!log.busy)
-    panic("write outside of trans");
+    if (log.lh.n >= LOGSIZE || log.lh.n >= log.size - 1)
+        panic("too big a transaction");
+  
+    if (!log.busy)
+        panic("write outside of trans");
 
-  for (i = 0; i < log.lh.n; i++) {
-    if (log.lh.sector[i] == b->sector)   // log absorbtion?
-      break;
-  }
-  log.lh.sector[i] = b->sector;
-  struct buf *lbuf = bread(b->dev, log.start+i+1);
-  memmove(lbuf->data, b->data, BSIZE);
-  bwrite(lbuf);
-  brelse(lbuf);
-  if (i == log.lh.n)
-    log.lh.n++;
-  b->flags |= B_DIRTY; // XXX prevent eviction
+    for (i = 0; i < log.lh.n; i++) {
+        if (log.lh.sector[i] == b->sector)   // log absorbtion?
+            break;
+    }
+
+    log.lh.sector[i] = b->sector;
+    struct buf *lbuf = bread(b->dev, log.start+i+1);
+    memmove(lbuf->data, b->data, BSIZE);
+    bwrite(lbuf);
+    brelse(lbuf);
+    if (i == log.lh.n)
+        log.lh.n++;
+    b->flags |= B_DIRTY; // XXX prevent eviction
 }
-
-//PAGEBREAK!
-// Blank page.
-

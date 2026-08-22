@@ -98,7 +98,7 @@ main (int argc, char *argv[])
 {
     int i, cc, fd;
     uint rootino, inum, off, binino, usrino, etcino, usrbinino,
-        devino, usr_share_ino, usr_share_icons_ino;
+        devino, usr_share_ino, usr_share_icons_ino; //, shellsino;
     struct dirent de;
     char buf[BSIZE];
     struct dinode din;
@@ -170,6 +170,7 @@ main (int argc, char *argv[])
     adddir ("etc", &etcino, rootino);
     adddir ("bin", &usrbinino, usrino);
     adddir ("dev", &devino, rootino);
+    //adddir ("shells", &shellsino, rootino);
     adddir ("share", &usr_share_ino, usrino);
     adddir ("icons", &usr_share_icons_ino, usr_share_ino);
 
@@ -177,6 +178,7 @@ main (int argc, char *argv[])
 
         int isbin = 0;
         int isetc = 0;
+        int isshells = 0;
 
         char *name = argv[i];
 
@@ -195,6 +197,10 @@ main (int argc, char *argv[])
         if (!strncmp(name, "fs/", 3))
             name += 3;
 
+  if (!strncmp(name, "shells/", 7)) {
+name += 7;
+isshells = 1; 
+  }
 //        printf ("name (2)=%s\n", name);
 
         assert (index(name, '/') == 0);
@@ -214,6 +220,8 @@ main (int argc, char *argv[])
             iappend(usr_share_icons_ino, &de, sizeof(de));
         else if (isetc == 1)
             iappend(etcino, &de, sizeof(de));
+        else if (isshells == 1)
+            iappend(binino, &de, sizeof(de));
         else
             iappend(binino, &de, sizeof(de));
 

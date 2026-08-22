@@ -1,6 +1,10 @@
-// Physical memory allocator, intended to allocate
-// memory for user processes, kernel stacks, page table pages,
-// and pipe buffers. Allocates 4096-byte pages.
+
+/*
+ *  kalloc.c -- allocate physical memory for the kernel.
+ *              Physical memory allocator, intended to allocate
+ *              memory for user processes, kernel stacks, page table pages,
+ *              and pipe buffers. Allocates 4096-byte pages.
+ */
 
 #include "types.h"
 #include "defs.h"
@@ -11,7 +15,7 @@
 
 void freerange (void *vstart, void *vend);
 
-extern char end []; // first address after kernel loaded from ELF file
+extern char end [];     // first address after kernel loaded from ELF file
 
 struct run {
     struct run *next;

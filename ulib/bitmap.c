@@ -1,9 +1,12 @@
+/*
+ *  bitmap.c -- read bitmap from disk
+ */
+
 #include "types.h"
 #include "stat.h"
 #include "fcntl.h"
 #include "user.h"
 #include "x86.h"
-//#include "gui_base.h"
 #include "gui/bitmap.h"
 #include "gui/user_window.h"
 
@@ -16,7 +19,7 @@ readBitmapHeader(int bmpFile, BITMAP_FILE_HEADER *bmpFileHeader, BITMAP_INFO_HEA
 }
 
 int 
-readBitmapFile(char *fileName, RGBA *result, int *height, int *width) 
+readBitmapFile (char *fileName, RGBA *result, int *height, int *width) 
 {
     int i;
     int bmpFile = open(fileName, 0);
@@ -56,8 +59,10 @@ readBitmapFile(char *fileName, RGBA *result, int *height, int *width)
 }
 
 int 
-read24BitmapFile(char *fileName, RGB *result, int *height, int *width) {
+read24BitmapFile (char *fileName, RGB *result, int *height, int *width) 
+{
     int i;
+
     int bmpFile = open(fileName, 0);
     if (bmpFile < 0) {
         return -1;
@@ -75,6 +80,7 @@ read24BitmapFile(char *fileName, RGB *result, int *height, int *width) {
     char tmpBytes[3];
     int rowBytes = column * 3;
     char *buf = (char *) result;
+
     for (i = 0; i < row; i++) {
         if (bits == 24) {
             read(bmpFile, buf + i * rowBytes, rowBytes);

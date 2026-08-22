@@ -55,6 +55,9 @@ void    printf(int, char *, ...);
 int     sprintf(char *, char*, ...);
 char *  gets(char*, int max);
 int     getchar (void);
+char *  strcat (char *dest, const char *src);
+
+void    putchar (int fd, char c);
 
 uint    strlen(char*);
 void *  memset(void*, int, uint);

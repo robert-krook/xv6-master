@@ -1,15 +1,18 @@
-// Boot loader.
-// 
-// Part of the boot sector, along with bootasm.S, which calls bootmain().
-// bootasm.S has put the processor into protected 32-bit mode.
-// bootmain() loads a multiboot kernel image from the disk starting at
-// sector 1 and then jumps to the kernel entry routine.
+
+/*
+ *  bootmain.c --   the function bootmain is called from the boot loader in
+ *                  in bootasm.S.
+ *
+ *                  Part of the boot sector, along with bootasm.S, which calls bootmain ().
+ *                  bootasm.S has put the processor into protected 32-bit mode.
+ *                  bootmain () loads a multiboot kernel image from the disk starting at
+ *                  sector 1 and then jumps to the kernel entry routine.
+ */
 
 #include "types.h"
-//#include "x86.h"
 #include "memlayout.h"
 
-#define SECTSIZE  512
+#define SECTSIZE  512       // Standard sector size
 
 struct mbheader {
     uint32 magic;
@@ -25,25 +28,25 @@ struct mbheader {
 inline uchar
 inb (ushort port)
 {
-  uchar data;
+    uchar data;
 
-  asm volatile("in %1,%0" : "=a" (data) : "d" (port));
-  return data;
+    asm volatile("in %1,%0" : "=a" (data) : "d" (port));
+    return data;
 }
 
 inline void
 stosb (void *addr, int data, int cnt)
 {
-  asm volatile("cld; rep stosb" :
-               "=D" (addr), "=c" (cnt) :
-               "0" (addr), "1" (cnt), "a" (data) :
-               "memory", "cc");
+    asm volatile("cld; rep stosb" :
+        "=D" (addr), "=c" (cnt) :
+        "0" (addr), "1" (cnt), "a" (data) :
+        "memory", "cc");
 }
 
 inline void
 outb (ushort port, uchar data)
 {
-  asm volatile("out %0,%1" : : "a" (data), "d" (port));
+    asm volatile("out %0,%1" : : "a" (data), "d" (port));
 }
 
 static inline void

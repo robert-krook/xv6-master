@@ -1,5 +1,7 @@
 /*
  *  user_window.c -- user mode window library.
+ *
+ *  We need the functions for graphical applications.
  */
 
 #include "types.h"
@@ -77,6 +79,9 @@ get_nearest_color (int r, int g, int b)
     return best_index;
 }
 
+/*
+ *  drawPointAlpha -- draw a point with a color at a position.
+ */
 void 
 drawPointAlpha (RGB *color, RGBA origin)
 {
@@ -623,22 +628,21 @@ drawRect (window *win, RGB color, int x, int y, int width, int height)
 int 
 freeWidget (window *win, int index)
 {
-    switch (win->widgets[index].type)
-    {
+    switch (win->widgets[index].type) {
     case COLORFILL:
-        free(win->widgets[index].context.colorfill);
+        free (win->widgets[index].context.colorfill);
         break;
     case BUTTON:
-        free(win->widgets[index].context.button);
+        free (win->widgets[index].context.button);
         break;
     case TEXT:
-        free(win->widgets[index].context.text);
+        free (win->widgets[index].context.text);
         break;
     case INPUTFIELD:
-        free(win->widgets[index].context.inputfield);
+        free (win->widgets[index].context.inputfield);
         break;
     case IMAGE:
-        free(win->widgets[index].context.image);
+        free (win->widgets[index].context.image);
         break;
     default:
         break;
@@ -646,15 +650,20 @@ freeWidget (window *win, int index)
     return 0;
 }
 
+/*
+ *  removeWidget -- remove widget from the window.
+ */
 int 
 removeWidget (window *win, int index)
 {
-    if (win->widgets[index].prev == index && win->widgets[index].next == index)
-    {
+    if (win->widgets[index].prev == index && win->widgets[index].next == index) {
         return -1;
     }
+
     freeWidget(win, index);
+    
     removeFromWidgetList(win, index);
+    
     return 0;
 }
 
@@ -667,7 +676,9 @@ setWidgetSize (Widget *widget, int x, int y, int w, int h)
     widget->position.ymax = y + h;
 }
 
-
+/*
+ *  addTextWidget -- add a text (label) to the window.
+ */
 int 
 addTextWidget (window *win, RGBA c, char *text, int x, int y, int w, int h, int scrollable, Handler handler)
 {
@@ -690,6 +701,9 @@ addTextWidget (window *win, RGBA c, char *text, int x, int y, int w, int h, int 
     return widgetId;
 }
 
+/*
+ *  addInputFieldWidget -- add an input field to the window.
+ */
 int 
 addInputFieldWidget (window *win, RGBA c, char *text, int x, int y, int w, int h, int scrollable, Handler handler)
 {
@@ -714,20 +728,24 @@ addInputFieldWidget (window *win, RGBA c, char *text, int x, int y, int w, int h
     return widgetId;
 }
 
+/*
+ *  fillRect -- fill a rectangle with a color.
+ */
 void 
 fillRect (RGB *buf, int x, int y, int width, int height, int max_x, int max_y, RGBA fill)
 {
     int i, j;
     RGB *t;
 
-    for (i = 0; i < height; i++)
-    {
+    for (i = 0; i < height; i++) {
+
         if (y + i < 0)
             continue;
+
         if (y + i >= max_y)
             break;
-        for (j = 0; j < width; j++)
-        {
+
+        for (j = 0; j < width; j++) {
             if (x + j < 0)
                 continue;
 
@@ -769,6 +787,9 @@ addColorFillWidget (window *win, RGBA c, int x, int y, int w, int h,
     return widgetId;
 }
 
+/*
+ *  draw24Image -- draw a raw image on the canvas.
+ */
 void 
 draw24Image (window *win, RGB *img, int x, int y, int width, int height)
 {
@@ -794,6 +815,9 @@ draw24Image (window *win, RGB *img, int x, int y, int width, int height)
     }
 }
 
+/*
+ *  drawColorFillWidget -- draw the background of the widget.
+ */
 void 
 drawColorFillWidget (window *win, Widget *w)
 {
@@ -801,8 +825,7 @@ drawColorFillWidget (window *win, Widget *w)
     int height = w->position.ymax - w->position.ymin;
     int xmin = w->position.xmin, ymin = w->position.ymin;
 
-    if (w->scrollable)
-    {
+    if (w->scrollable) {
         xmin = w->position.xmin - win->scrollOffsetX;
         ymin = w->position.ymin - win->scrollOffsetY;
     }

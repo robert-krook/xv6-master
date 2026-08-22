@@ -1,3 +1,8 @@
+
+/*
+ *  mouse.c -- mouse driver
+ */
+
 #include "types.h"
 #include "x86.h"
 #include "defs.h"
@@ -7,8 +12,7 @@
 
 static struct spinlock mouselock;
 
-static struct
-{
+static struct {
     int x_sgn, y_sgn, x_mov, y_mov;
     int l_btn, r_btn, m_btn;
     int x_overflow, y_overflow;
@@ -23,18 +27,16 @@ void
 mouse_wait (uchar type)
 {
     uint time_out = 100000;
-    if (type == 0)
-    {
-        while (--time_out)
-        {
+
+    if (type == 0) {
+
+        while (--time_out) {
             if ((inb(0x64) & 1) == 1)
                 return;
         }
-    }
-    else
-    {
-        while (--time_out)
-        {
+    } else {
+
+        while (--time_out) {
             if ((inb(0x64) & 2) == 0)
                 return;
         }
@@ -121,8 +123,8 @@ genMouseMessage ()
 
     struct message msg;
 
-    if (packet.x_mov || packet.y_mov)
-    {
+    if (packet.x_mov || packet.y_mov) {
+
         msg.msg_type = M_MOUSE_MOVE;
         msg.params[0] = packet.x_mov;
         msg.params[1] = packet.y_mov;
@@ -130,33 +132,27 @@ genMouseMessage ()
         lastdowntick = lastclicktick = -1000;
         if (btns != lastbtn)
             genMouseUpMessage(btns);
-    }
-    else if (btns)
-    {
+
+    } else if (btns) {
+
         msg.msg_type = M_MOUSE_DOWN;
         msg.params[0] = btns;
         lastdowntick = packet.tick;
-    }
-    else if (packet.tick - lastdowntick < 30)
-    {
-        if (lastbtn & 1)
-        {
+
+    } else if (packet.tick - lastdowntick < 30) {
+
+        if (lastbtn & 1) {
             msg.msg_type = M_MOUSE_LEFT_CLICK;
-        }
-        else
-        {
+        } else {
             msg.msg_type = M_MOUSE_RIGHT_CLICK;
         }
-        if (packet.tick - lastclicktick < 60)
-        {
+
+        if (packet.tick - lastclicktick < 60) {
             msg.msg_type = M_MOUSE_DBCLICK;
             lastclicktick = -1000;
-        }
-        else
+        } else
             lastclicktick = packet.tick;
-    }
-    else
-    {
+    } else {
         genMouseUpMessage(btns);
     }
 
@@ -170,8 +166,7 @@ mouseintr (uint tick)
 {
     acquire(&mouselock);
     int state;
-    while (((state = inb(0x64)) & 1) == 1)
-    {
+    while (((state = inb(0x64)) & 1) == 1) {
         int data = inb(0x60);
         count++;
 
@@ -184,11 +179,9 @@ mouseintr (uint tick)
         else
             recovery = -1;
 
-        switch (count)
-        {
+        switch (count) {
         case 1:
-            if (data & 0x08)
-            {
+            if (data & 0x08) {
                 packet.y_overflow = (data >> 7) & 0x1;
                 packet.x_overflow = (data >> 6) & 0x1;
                 packet.y_sgn = (data >> 5) & 0x1;
@@ -197,9 +190,7 @@ mouseintr (uint tick)
                 packet.r_btn = (data >> 1) & 0x1;
                 packet.l_btn = (data >> 0) & 0x1;
                 break;
-            }
-            else
-            {
+            } else {
                 count = 0;
                 break;
             }
@@ -218,13 +209,10 @@ mouseintr (uint tick)
             break;
         }
 
-        if (recovery == 2)
-        {
+        if (recovery == 2) {
             count = 0;
             recovery = -1;
-        }
-        else if (count == 3)
-        {
+        } else if (count == 3) {
             count = 0;
             genMouseMessage();
         }

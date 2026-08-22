@@ -35,9 +35,6 @@ readsb (int dev, struct superblock *sb)
 
     memmove (sb, bp->data, sizeof(*sb));
 
-    // Copy the super block details to static variable
-//    memmove(&_sb, bp->data, sizeof(*sb));
-
     brelse(bp);
 }
 
@@ -67,22 +64,21 @@ balloc (uint dev)
 
     readsb (dev, &sb);
 
-    for(b = 0; b < sb.size; b += BPB) 
-    {
+    for(b = 0; b < sb.size; b += BPB)  {
+
         bp = bread(dev, BBLOCK(b, sb.ninodes));
 
-        for(bi = 0; bi < BPB && b + bi < sb.size; bi++) 
-        {
+        for(bi = 0; bi < BPB && b + bi < sb.size; bi++) {
             m = 1 << (bi % 8);
-            if((bp->data[bi/8] & m) == 0) 
-            {  // Is block free?
-                bp->data[bi/8] |= m;  // Mark block in use.
+            if((bp->data[bi/8] & m) == 0)  {    // Is block free?
+                bp->data[bi/8] |= m;            // Mark block in use.
                 log_write(bp);
                 brelse(bp);
                 bzero(dev, b + bi);
                 return b + bi;
             }
         }
+
         brelse(bp);
     }
     panic("balloc: out of blocks");
@@ -199,18 +195,22 @@ ialloc (uint dev, short type)
 
   readsb (dev, &sb);
 
-  for(inum = 1; inum < sb.ninodes; inum++){
+  for(inum = 1; inum < sb.ninodes; inum++) {
+
     bp = bread(dev, IBLOCK(inum));
     dip = (struct dinode*)bp->data + inum%IPB;
-    if(dip->type == 0){  // a free inode
+
+    if(dip->type == 0) {  // a free inode
       memset(dip, 0, sizeof(*dip));
       dip->type = type;
       log_write(bp);   // mark it allocated on the disk
       brelse(bp);
       return iget(dev, inum);
     }
+
     brelse(bp);
   }
+
   panic("ialloc: no inodes");
 }
 
@@ -251,14 +251,14 @@ iget (uint dev, uint inum)
     // Is the inode already cached?
     empty = 0;
 
-    for (ip = &icache.inode[0]; ip < &icache.inode[NINODE]; ip++)
-    {
-        if (ip->ref > 0 && ip->dev == dev && ip->inum == inum)
-        {
+    for (ip = &icache.inode[0]; ip < &icache.inode[NINODE]; ip++) {
+
+        if (ip->ref > 0 && ip->dev == dev && ip->inum == inum) {
             ip->ref++;
             release (&icache.lock);
             return ip;
         }
+
         if (empty == 0 && ip->ref == 0)    // Remember empty slot.
             empty = ip;
     }
@@ -341,9 +341,13 @@ iunlock(struct inode *ip)
     panic("iunlock");
 
   acquire(&icache.lock);
+
   ip->flags &= ~I_BUSY;
+
   wakeup(ip);
+
   release(&icache.lock);
+
 }
 
 // Drop a reference to an in-memory inode.
@@ -355,8 +359,8 @@ void
 iput (struct inode *ip)
 {
     acquire(&icache.lock);
-    if(ip->ref == 1 && (ip->flags & I_VALID) && ip->nlink == 0) 
-    {
+    if(ip->ref == 1 && (ip->flags & I_VALID) && ip->nlink == 0) {
+
         // inode has no links: truncate and free inode.
         if(ip->flags & I_BUSY)
             panic("iput busy");
@@ -365,10 +369,10 @@ iput (struct inode *ip)
         release(&icache.lock);
         itrunc(ip);
         ip->type = 0;
-        iupdate(ip);
-        acquire(&icache.lock);
+        iupdate (ip);
+        acquire (&icache.lock);
         ip->flags = 0;
-        wakeup(ip);
+        wakeup (ip);
     }
     ip->ref--;
     release (&icache.lock);
@@ -378,8 +382,8 @@ iput (struct inode *ip)
 void
 iunlockput (struct inode *ip)
 {
-  iunlock(ip);
-  iput(ip);
+    iunlock (ip);
+    iput (ip);
 }
 
 // Inode content
@@ -398,8 +402,7 @@ bmap (struct inode *ip, uint bn)
     uint addr, *a;
     struct buf *bp;
 
-    if(bn < NDIRECT) 
-    {
+    if(bn < NDIRECT) {
         if((addr = ip->addrs[bn]) == 0)
             ip->addrs[bn] = addr = balloc(ip->dev);
         return addr;
@@ -407,8 +410,8 @@ bmap (struct inode *ip, uint bn)
 
     bn -= NDIRECT;
 
-    if (bn < NINDIRECT) 
-    {
+    if (bn < NINDIRECT) {
+
         // Load indirect block, allocating if necessary.
         if((addr = ip->addrs[NDIRECT]) == 0)
             ip->addrs[NDIRECT] = addr = balloc(ip->dev);
@@ -417,8 +420,7 @@ bmap (struct inode *ip, uint bn)
 
         a = (uint*)bp->data;
 
-        if((addr = a[bn]) == 0) 
-        {
+        if((addr = a[bn]) == 0) {
             a[bn] = addr = balloc(ip->dev);
             log_write(bp);
         }
@@ -443,24 +445,24 @@ itrunc (struct inode *ip)
     struct buf *bp;
     uint *a;
 
-    for(i = 0; i < NDIRECT; i++) 
-    {
-        if(ip->addrs[i]) 
-        {
+    for(i = 0; i < NDIRECT; i++) {
+
+        if(ip->addrs[i]) {
             bfree(ip->dev, ip->addrs[i]);
             ip->addrs[i] = 0;
         }
     }
   
-    if (ip->addrs[NDIRECT]) 
-    {
+    if (ip->addrs[NDIRECT]) {
+
         bp = bread(ip->dev, ip->addrs[NDIRECT]);
         a = (uint*)bp->data;
-        for(j = 0; j < NINDIRECT; j++) 
-        {
+
+        for(j = 0; j < NINDIRECT; j++) {
             if(a[j])
             bfree(ip->dev, a[j]);
         }
+        
         brelse(bp);
         bfree(ip->dev, ip->addrs[NDIRECT]);
         ip->addrs[NDIRECT] = 0;

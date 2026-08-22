@@ -43,4 +43,4 @@ hti ht_iterator(ht * table);
 // items, return false. Don't call ht_set during iteration.
 bool ht_next(hti * it);
 
-//char * strdup (char *src);
+char * strdup (char *src);

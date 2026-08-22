@@ -1,4 +1,3 @@
-
 /*
  *  amiga.c -- amiga gui version.
  *
@@ -27,7 +26,6 @@
 #include "stdio.h"
 #include "fcntl.h"
 #include "libc/stdlib.h"
-
 
 struct RGBA amiga_iconColor;
 struct RGBA amiga_titleBarColor;
